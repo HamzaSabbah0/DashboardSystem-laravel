@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Cairo';
+    font-weight: 100 1000;
+    font-stretch: 25% 151%;
+    src: local('Open Sans Light'), local('OpenSans-Light'), url('../fonts/Cairo/Cairo-VariableFont_wght.ttf') format('woff');
+}
+
+body {
+    font-family: 'Cairo', sans-serif !important;
+}
+
+/* .navbar-custom {
+    border-bottom: 1px solid #ccc;
+}
+
+.menu-arrow::before {
+    display: none;
+}
+
+.dz-image img {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+input[type=email] {
+    direction: rtl !important;
+} */
