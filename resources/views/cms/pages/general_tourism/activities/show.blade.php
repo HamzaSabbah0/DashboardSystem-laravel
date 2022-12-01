@@ -63,11 +63,6 @@
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <div class="col-xl-6 col-md-6 col-sm-12 col-12">
-                        <p><b>عنوان القسم:</b> {{ $activity->section_title }}</p>
-                    </div>
-                </div>
-                <div class="row mb-3">
                     <div class="col-xl-12 col-md-12 col-sm-12 col-12" id="photo">
                         <img src="{{ asset('storage/' . $activity->photo) }}" alt="photo">
                     </div>

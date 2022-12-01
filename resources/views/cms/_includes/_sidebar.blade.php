@@ -262,6 +262,222 @@
                 </ul>
             </li>
             <li class="menu">
+                <a href="#generalTourism" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <div class="">
+                        <i class="fa fa-plane"></i>
+                        <span>السياحة العامة</span>
+                    </div>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-chevron-right">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
+                </a>
+                <ul class="collapse submenu list-unstyled" id="generalTourism" data-bs-parent="#generalTourism">
+                    <li class="menu">
+                        <a href="#general-tourismActivites" data-bs-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle">
+                            <div class="">
+                                <i class="fa fa-weight-hanging"></i>
+                                <span>الانشطة</span>
+                            </div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="feather feather-chevron-right">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+                        <ul class="collapse submenu list-unstyled" id="general-tourismActivites"
+                            data-bs-parent="#general-tourismActivites">
+                            <li>
+                                <a href="{{route('panel.general.tourism.activities.index')}}">قائمة الانشطة</a>
+                            </li>
+                            <li>
+                                <a href="{{route('panel.general.tourism.activities.create')}}">إضافة نشاط</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu">
+                        <a href="#general-tourismPartners" data-bs-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle">
+                            <div class="">
+                                <i class="fa fa-users"></i>
+                                <span>الشركاء</span>
+                            </div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="feather feather-chevron-right">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+                        <ul class="collapse submenu list-unstyled" id="general-tourismPartners"
+                            data-bs-parent="#general-tourismPartners">
+                            <li>
+                                <a href="{{route('panel.general.tourism.partners.index')}}">قائمة الشركاء</a>
+                            </li>
+                            <li>
+                                <a href="{{route('panel.general.tourism.partners.create')}}">إضافة شريك</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu">
+                        <a href="#general-tourismSliders" data-bs-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle">
+                            <div class="">
+                                <i class="fa fa-image"></i>
+                                <span>صور الغلاف</span>
+                            </div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="feather feather-chevron-right">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+                        <ul class="collapse submenu list-unstyled" id="general-tourismSliders"
+                            data-bs-parent="#general-tourismSliders">
+                            <li>
+                                <a href="{{route('panel.general.tourism.sliders.index')}}">قائمة الصور</a>
+                            </li>
+                            <li>
+                                <a href="{{route('panel.general.tourism.sliders.create')}}">إضافة صور</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu">
+                <a href="#medicalTourism" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <div class="">
+                        <i class="fa fa-truck-medical"></i>
+                        <span>السياحة العلاجية</span>
+                    </div>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-chevron-right">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
+                </a>
+                <ul class="collapse submenu list-unstyled" id="medicalTourism" data-bs-parent="#medicalTourism">
+                    <li class="menu">
+                        <a href="#medical-tourismActivites" data-bs-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle">
+                            <div class="">
+                                <i class="fa fa-house-chimney-medical"></i>
+                                <span>المجالات</span>
+                            </div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="feather feather-chevron-right">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+                        <ul class="collapse submenu list-unstyled" id="medical-tourismActivites"
+                            data-bs-parent="#medical-tourismActivites">
+                            <li>
+                                <a href="{{route('panel.medical.tourism.fields.index')}}">قائمة المجالات</a>
+                            </li>
+                            <li>
+                                <a href="{{route('panel.medical.tourism.fields.create')}}">إضافة مجال</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu">
+                        <a href="#medical-tourismPhotos" data-bs-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle">
+                            <div class="">
+                                <i class="fa fa-image"></i>
+                                <span>صورة المجالات</span>
+                            </div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="feather feather-chevron-right">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+                        <ul class="collapse submenu list-unstyled" id="medical-tourismPhotos"
+                            data-bs-parent="#medical-tourismPhotos">
+                            <li>
+                                <a href="{{route('panel.medical.tourism.fields-images.index')}}">قائمة الصور</a>
+                            </li>
+                            <li>
+                                <a href="{{route('panel.medical.tourism.fields-images.create')}}">إضافة صور</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu">
+                        <a href="#medical-tourismPartners" data-bs-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle">
+                            <div class="">
+                                <i class="fa fa-users"></i>
+                                <span>الشركاء</span>
+                            </div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="feather feather-chevron-right">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+                        <ul class="collapse submenu list-unstyled" id="medical-tourismPartners"
+                            data-bs-parent="#medical-tourismPartners">
+                            <li>
+                                <a href="{{route('panel.medical.tourism.partners.index')}}">قائمة الشركاء</a>
+                            </li>
+                            <li>
+                                <a href="{{route('panel.medical.tourism.partners.create')}}">إضافة شريك</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu">
+                        <a href="#medical-tourismSliders" data-bs-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle">
+                            <div class="">
+                                <i class="fa fa-image"></i>
+                                <span>صور الغلاف</span>
+                            </div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="feather feather-chevron-right">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+                        <ul class="collapse submenu list-unstyled" id="medical-tourismSliders"
+                            data-bs-parent="#medical-tourismSliders">
+                            <li>
+                                <a href="{{route('panel.medical.tourism.sliders.index')}}">قائمة الصور</a>
+                            </li>
+                            <li>
+                                <a href="{{route('panel.medical.tourism.sliders.create')}}">إضافة صور</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu">
                 <a href="#trade" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <i class="fa fa-truck-medical"></i>
@@ -379,6 +595,189 @@
                 </ul>
             </li>
             <li class="menu">
+                <a href="#real-estate" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <div class="">
+                        <i class="fa fa-sign-hanging"></i>
+                        <span>العقارات</span>
+                    </div>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-chevron-right">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
+                </a>
+                <ul class="collapse submenu list-unstyled" id="real-estate" data-bs-parent="#real-estate">
+                    <li class="menu">
+                        <a href="#real-estateAbout" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                            <div class="">
+                                <i class="fa-regular fa-circle-question"></i>
+                                <span>من نحن</span>
+                            </div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="feather feather-chevron-right">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+                        <ul class="collapse submenu list-unstyled" id="real-estateAbout" data-bs-parent="#real-estateAbout">
+                            <li>
+                                <a href="{{route('panel.real.estate.about')}}">عن العقارات</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu">
+                        <a href="#real-estateFields" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                            <div class="">
+                                <i class="fa fa-square-person-confined"></i>
+                                <span>المجالات</span>
+                            </div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="feather feather-chevron-right">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+                        <ul class="collapse submenu list-unstyled" id="real-estateFields" data-bs-parent="#real-estateFields">
+                            <li>
+                                <a href="{{route('panel.real.estate.fields.index')}}">قائمة المجالات</a>
+                            </li>
+                            <li>
+                                <a href="{{route('panel.real.estate.fields.create')}}">إضافة مجال</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu">
+                        <a href="#real-estatePartners" data-bs-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle">
+                            <div class="">
+                                <i class="fa fa-users"></i>
+                                <span>الشركاء</span>
+                            </div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="feather feather-chevron-right">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+                        <ul class="collapse submenu list-unstyled" id="real-estatePartners"
+                            data-bs-parent="#real-estatePartners">
+                            <li>
+                                <a href="{{route('panel.real.estate.partners.index')}}">قائمة الشركاء</a>
+                            </li>
+                            <li>
+                                <a href="{{route('panel.real.estate.partners.create')}}">إضافة شريك</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu">
+                        <a href="#real-estateSliders" data-bs-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle">
+                            <div class="">
+                                <i class="fa fa-image"></i>
+                                <span>صور الغلاف</span>
+                            </div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="feather feather-chevron-right">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+                        <ul class="collapse submenu list-unstyled" id="real-estateSliders"
+                            data-bs-parent="#real-estateSliders">
+                            <li>
+                                <a href="{{route('panel.real.estate.sliders.index')}}">قائمة الصور</a>
+                            </li>
+                            <li>
+                                <a href="{{route('panel.real.estate.sliders.create')}}">إضافة صور</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="menu">
+                <a href="#programming" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <div class="">
+                        <i class="fa fa-computer"></i>
+                        <span>البرمجة</span>
+                    </div>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-chevron-right">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
+                </a>
+                <ul class="collapse submenu list-unstyled" id="programming" data-bs-parent="#programming">
+                    <li class="menu">
+                        <a href="#programmingServices" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                            <div class="">
+                                <i class="fa fa-flashlight"></i>
+                                <span>الخدمات</span>
+                            </div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="feather feather-chevron-right">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+                        <ul class="collapse submenu list-unstyled" id="programmingServices" data-bs-parent="#programmingServices">
+                            <li>
+                                <a href="{{route('panel.programming.services.index')}}">قائمة الخدمات</a>
+                            </li>
+                            <li>
+                                <a href="{{route('panel.programming.services.create')}}">إضافة خدمة</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu">
+                        <a href="#programmingSliders" data-bs-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle">
+                            <div class="">
+                                <i class="fa fa-image"></i>
+                                <span>صور الغلاف</span>
+                            </div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="feather feather-chevron-right">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                        </a>
+                        <ul class="collapse submenu list-unstyled" id="programmingSliders"
+                            data-bs-parent="#programmingSliders">
+                            <li>
+                                <a href="{{route('panel.programming.sliders.index')}}">قائمة الصور</a>
+                            </li>
+                            <li>
+                                <a href="{{route('panel.programming.sliders.create')}}">إضافة صور</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="menu">
                 <a href="#teamWork" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <i class="fa fa-people-group"></i>
@@ -401,14 +800,6 @@
                     </li>
                 </ul>
             </li>
-            {{-- <li class="menu">
-                <a href="" data-active="" aria-expanded="false" class="dropdown-toggle">
-                    <div class="">
-                        <i class="fa-regular fa-circle-question"></i>
-                        <span>من نحن</span>
-                    </div>
-                </a>
-            </li> --}}
             <li class="menu">
                 <a href="{{route('panel.settings')}}"
                     data-active="{{ \Route::currentRouteName() == 'panel.settings' ? 'true' : 'false' }}"

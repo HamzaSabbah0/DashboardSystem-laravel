@@ -20,7 +20,6 @@
                                 <th>الصورة</th>
                                 <th>العنوان</th>
                                 <th>الوصف</th>
-                                <th>عنوان القسم</th>
                                 <th class="text-center">الأدوات</th>
                             </tr>
                         </thead>
@@ -28,21 +27,20 @@
                             @foreach ($activities as $activity)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td><img src= {{$item->photo}} alt='new' width='70' height='70'></td>
+                                    <td><img src= {{$activity->photo}} alt='new' width='70' height='70'></td>
                                     <td>{{ $activity->title_ar }}</td>
                                     <td>{{ \Str::limit($activity->description_ar, 100, '...') }}</td>
-                                    <td>{{ $activity->section_title }}</td>
                                     <td class="text-center">
                                         <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                            <a href="{{ route('eleven-activities.edit', $activity->id) }}"
+                                            <a href="{{ route('panel.general.tourism.activities.edit', $activity->id) }}"
                                                 class="btn btn-outline-primary">
                                                 <i class="fa-regular fa-pen-to-square"></i>
                                             </a>
-                                            <a href="{{ route('eleven-activities.show', $activity->id) }}"
+                                            <a href="{{ route('panel.general.tourism.activities.show', $activity->id) }}"
                                                 class="btn btn-outline-primary">
                                                 <i class="fa-regular fa-eye"></i>
                                             </a>
-                                            <form action="{{ route('eleven-activities.destroy', $activity->id) }}"
+                                            <form action="{{ route('panel.general.tourism.activities.destroy', $activity->id) }}"
                                                 method="POST">
                                                 @csrf
                                                 @method('DELETE')

@@ -6,7 +6,7 @@
             <div class="widget-header">
                 <div class="row">
                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                        <h4>إدارة فريق العمل</h4>
+                        <h4>اداراة مجالات العقارات</h4>
                     </div>
                 </div>
             </div>
@@ -54,7 +54,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        {{ $fields->links() }}
+                        {{-- {{ $fields->links() }} --}}
                     </div>
                 </div>
             </div>

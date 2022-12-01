@@ -12,7 +12,7 @@
                     </div>
                 </div>
                 <div class="widget-content widget-content-area">
-                    <form action="{{ route('panel.trade.fields.update',$field->id) }}" method="POST">
+                    <form action="{{ route('panel.trade.fields.update','field') }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="row">
