@@ -12,7 +12,7 @@
                     </div>
                 </div>
                 <div class="widget-content widget-content-area">
-                    <form action="{{ route('panel.home.services.store') }}" method="POST">
+                    <form action="{{ route('panel.home.services.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="form-group mb-4 col">

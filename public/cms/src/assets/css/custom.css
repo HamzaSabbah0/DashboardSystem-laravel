@@ -9,6 +9,12 @@ body {
     font-family: 'Cairo', sans-serif !important;
 }
 
+td .btn-outline-primary:hover * {
+    color: #fff !important;
+    background-color: #4361ee;
+    box-shadow: 0 10px 20px -10px rgb(27 85 226 / 59%);
+}
+
 /* .navbar-custom {
     border-bottom: 1px solid #ccc;
 }

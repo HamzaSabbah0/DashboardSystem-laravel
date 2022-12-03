@@ -18,8 +18,8 @@ class SportSlidersController extends Controller
      */
     public function index()
     {
-        $slider = Slider::where('section_title','sport_page')->paginate(10);
-        return view('cms.pages.sport.sliders.index');
+        $sliders = Slider::where('section_title','sport_page')->paginate(10);
+        return view('cms.pages.sport.sliders.index', compact("sliders"));
     }
 
     /**

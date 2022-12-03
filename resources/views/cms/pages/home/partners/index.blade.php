@@ -24,8 +24,10 @@
                             @foreach ($partners as $partner)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td><img class="img-circle img-bordered-sm" src="{{ Storage::url($partner->photo) }}"
-                                            width="80" alt="Team Work Image"></td>
+                                    <td>
+                                        <img class="img-circle img-bordered-sm" src="{{ $partner->photo }}" width="80"
+                                            alt="partners">
+                                    </td>
                                     <td class="text-center">
                                         <div class="btn-group" role="group" aria-label="Basic outlined example">
                                             <a href="{{ route('panel.home.partners.edit', $partner->id) }}"
@@ -49,7 +51,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        {{-- {{ $partner->links() }} --}}
+                        {{ $partners->links() }}
                     </div>
                 </div>
             </div>

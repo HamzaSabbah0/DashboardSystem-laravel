@@ -13,14 +13,15 @@
                     </div>
                 </div>
                 <div class="widget-content widget-content-area">
-                    <form action="{{ route('panel.home.testimonials.update','testimonial') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('panel.home.testimonials.update', $testimonial->id) }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="row">
                             <div class="form-group mb-4 col">
                                 <label for="nameAr" class="form-label">الاسم باللغة العربية</label>
-                                <input type="text" class="form-control" name="name_ar" id="nameAr"
-                                    placeholder="الاسم" value="{{ old('name_ar', $testimonial ? $testimonial->name_ar : '') }}" required>
+                                <input type="text" class="form-control" name="name_ar" id="nameAr" placeholder="الاسم"
+                                    value="{{ old('name_ar', $testimonial ? $testimonial->name_ar : '') }}" required>
                                 @error('name_ar')
                                     <div class="alert alert-danger">
                                         {{ $message }}
@@ -52,7 +53,8 @@
                             <div class="form-group mb-4 col">
                                 <label for="nameFr" class="form-label">الاسم باللغة الفرنسية</label>
                                 <input type="text" class="form-control" name="name_fr" id="nameFr"
-                                    placeholder="Le nom" value="{{ old('name_fr', $testimonial ? $testimonial->name_fr : '') }}" required>
+                                    placeholder="Le nom"
+                                    value="{{ old('name_fr', $testimonial ? $testimonial->name_fr : '') }}" required>
                                 @error('name_fr')
                                     <div class="alert alert-danger">
                                         {{ $message }}
@@ -64,7 +66,9 @@
                             <div class="form-group mb-4 col">
                                 <label for="careerTitleAr" class="form-label">المهنة باللغة العربية</label>
                                 <input type="text" class="form-control" name="career_title_ar" id="careerTitleAr"
-                                    placeholder="المهنة" value="{{ old('career_title_ar', $testimonial ? $testimonial->career_title_ar : '') }}" required>
+                                    placeholder="المهنة"
+                                    value="{{ old('career_title_ar', $testimonial ? $testimonial->career_title_ar : '') }}"
+                                    required>
                                 @error('career_title_ar')
                                     <div class="alert alert-danger">
                                         {{ $message }}
@@ -74,7 +78,9 @@
                             <div class="form-group mb-4 col">
                                 <label for="careerTitleEr" class="form-label">المهنة باللغة الانجليزية</label>
                                 <input type="text" class="form-control" name="career_title_en" id="careerTitleEr"
-                                    placeholder="career" value="{{ old('career_title_en', $testimonial ? $testimonial->career_title_en : '') }}" required>
+                                    placeholder="career"
+                                    value="{{ old('career_title_en', $testimonial ? $testimonial->career_title_en : '') }}"
+                                    required>
                                 @error('career_title_en')
                                     <div class="alert alert-danger">
                                         {{ $message }}
@@ -86,7 +92,9 @@
                             <div class="form-group mb-4 col">
                                 <label for="careerTitleTu" class="form-label">المهنة باللغة التركية</label>
                                 <input type="text" class="form-control" name="career_title_tu" id="careerTitleTu"
-                                    placeholder="meslek" value="{{ old('career_title_tu', $testimonial ? $testimonial->career_title_tu : '') }}" required>
+                                    placeholder="meslek"
+                                    value="{{ old('career_title_tu', $testimonial ? $testimonial->career_title_tu : '') }}"
+                                    required>
                                 @error('career_title_tu')
                                     <div class="alert alert-danger">
                                         {{ $message }}
@@ -96,7 +104,9 @@
                             <div class="form-group mb-4 col">
                                 <label for="careerTitleFr" class="form-label">المهنة باللغة الفرنسية</label>
                                 <input type="text" class="form-control" name="career_title_fr" id="careerTitleFr"
-                                    placeholder="profession" value="{{ old('career_title_fr', $testimonial ? $testimonial->career_title_fr : '') }}" required>
+                                    placeholder="profession"
+                                    value="{{ old('career_title_fr', $testimonial ? $testimonial->career_title_fr : '') }}"
+                                    required>
                                 @error('career_title_fr')
                                     <div class="alert alert-danger">
                                         {{ $message }}
@@ -108,7 +118,8 @@
                             <div class="form-group mb-4 col">
                                 <label for="titleAr" class="form-label">العنوان باللغة العربية</label>
                                 <input type="text" class="form-control" name="title_ar" id="titleAr"
-                                    placeholder="العنوان" value="{{ old('title_ar', $testimonial ? $testimonial->title_ar : '') }}" required>
+                                    placeholder="العنوان"
+                                    value="{{ old('title_ar', $testimonial ? $testimonial->title_ar : '') }}" required>
                                 @error('title_ar')
                                     <div class="alert alert-danger">
                                         {{ $message }}
@@ -117,7 +128,8 @@
                             </div>
                             <div class="form-group mb-4 col">
                                 <label for="titleEn" class="form-label">العنوان باللغة الانجليزية</label>
-                                <input type="text" class="form-control" name="title_en" id="titleEn" placeholder="address"
+                                <input type="text" class="form-control" name="title_en" id="titleEn"
+                                    placeholder="address"
                                     value="{{ old('title_en', $testimonial ? $testimonial->title_en : '') }}" required>
                                 @error('title_en')
                                     <div class="alert alert-danger">
@@ -129,7 +141,8 @@
                         <div class="row">
                             <div class="form-group mb-4 col">
                                 <label for="titleTu" class="form-label">العنوان باللغة التركية</label>
-                                <input type="text" class="form-control" name="title_tu" id="titleTu" placeholder="adres"
+                                <input type="text" class="form-control" name="title_tu" id="titleTu"
+                                    placeholder="adres"
                                     value="{{ old('title_tu', $testimonial ? $testimonial->title_tu : '') }}" required>
                                 @error('title_tu')
                                     <div class="alert alert-danger">
@@ -140,7 +153,8 @@
                             <div class="form-group mb-4 col">
                                 <label for="titleFr" class="form-label">العنوان باللغة الفرنسية</label>
                                 <input type="text" class="form-control" name="title_fr" id="titleFr"
-                                    placeholder="l'adresse" value="{{ old('title_fr', $testimonial ? $testimonial->title_fr : '') }}" required>
+                                    placeholder="l'adresse"
+                                    value="{{ old('title_fr', $testimonial ? $testimonial->title_fr : '') }}" required>
                                 @error('title_fr')
                                     <div class="alert alert-danger">
                                         {{ $message }}
@@ -150,8 +164,8 @@
                         </div>
                         <div class="form-group mb-4">
                             <label for="descriptionAr">الوصف باللغة العربية</label>
-                            <textarea class="form-control" id="descriptionAr" name="description_ar" rows="3" placeholder="الوصف باللغة العربة"
-                                required>{{ $testimonial ? $testimonial->description_ar : '' }}</textarea>
+                            <textarea class="form-control" id="descriptionAr" name="description_ar" rows="3"
+                                placeholder="الوصف باللغة العربة" required>{{ old('description_ar', $testimonial ? $testimonial->description_ar : '') }}</textarea>
                             @error('description_ar')
                                 <div class="alert alert-danger">
                                     {{ $message }}
@@ -161,7 +175,7 @@
                         <div class="form-group mb-4">
                             <label for="descriptionEn">الوصف باللغة الانجليزية</label>
                             <textarea class="form-control" id="descriptionEn" name="description_en" rows="3"
-                                placeholder="الوصف باللغة الانجليزية " required>{{ $testimonial ? $testimonial->description_ar : '' }}</textarea>
+                                placeholder="الوصف باللغة الانجليزية " required>{{ old('description_en', $testimonial ? $testimonial->description_en : '') }}</textarea>
                             @error('description_en')
                                 <div class="alert alert-danger">
                                     {{ $message }}
@@ -171,7 +185,7 @@
                         <div class="form-group mb-4">
                             <label for="descriptionTu">الوصف باللغة التركية</label>
                             <textarea class="form-control" id="descriptionTu" name="description_tu" rows="3"
-                                placeholder="الوصف باللغة التركية" required>{{ $testimonial ? $testimonial->description_ar : '' }}</textarea>
+                                placeholder="الوصف باللغة التركية" required>{{ old('description_tu', $testimonial ? $testimonial->description_tu : '') }}</textarea>
                             @error('description_tu')
                                 <div class="alert alert-danger">
                                     {{ $message }}
@@ -181,7 +195,7 @@
                         <div class="form-group mb-4">
                             <label for="descriptionFr">الوصف باللغة الفرنسية</label>
                             <textarea class="form-control" id="descriptionFr" name="description_fr" rows="3"
-                                placeholder="الوصف باللغة الفرنسية" required>{{ $testimonial ? $testimonial->description_ar : '' }}</textarea>
+                                placeholder="الوصف باللغة الفرنسية" required>{{ old('description_fr', $testimonial ? $testimonial->description_fr : '') }}</textarea>
                             @error('description_fr')
                                 <div class="alert alert-danger">
                                     {{ $message }}
@@ -203,7 +217,7 @@
                                 <label class="custom-file-container__custom-file">
                                     <input type="file" name="photo"
                                         class="custom-file-container__custom-file__custom-file-input"
-                                        accept="image/png,image/jpg,image/jpeg" required>
+                                        accept="image/png,image/jpg,image/jpeg">
                                     {{-- <input type="hidden" name="MAX_FILE_SIZE" value="10485760" /> --}}
                                     <span class="custom-file-container__custom-file__custom-file-control"></span>
                                 </label>
@@ -256,7 +270,9 @@
             $('#descriptionFr').summernote(optionsEn);
             $('#descriptionTu').summernote(optionsEn);
 
-            new FileUploadWithPreview('myFirstImage');
+            new FileUploadWithPreview('myFirstImage', {
+                presetFiles: ["{{ $testimonial->photo }}"]
+            });
         });
     </script>
 @endpush

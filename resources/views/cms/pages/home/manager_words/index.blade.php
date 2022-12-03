@@ -15,10 +15,58 @@
                 <div class="widget-content widget-content-area">
                     <form action="{{ route('panel.home.manager.post') }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        <div class="row">
+                            <div class="form-group mb-4 col">
+                                <label for="titleAr" class="form-label">العنوان باللغة العربية</label>
+                                <input type="text" class="form-control" name="title_ar" id="titleAr"
+                                    placeholder="العنوان باللغة العربية"
+                                    value="{{ old('title_ar', $about ? $about->title_ar : '') }}" required>
+                                @error('title_ar')
+                                    <div class="alert alert-danger">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="form-group mb-4 col">
+                                <label for="titleEn" class="form-label">العنوان باللغة الانجليزية</label>
+                                <input type="text" class="form-control" name="title_en" id="titleEn"
+                                    placeholder="العنوان باللغة الانجليزية"
+                                    value="{{ old('title_en', $about ? $about->title_en : '') }}" required>
+                                @error('title_en')
+                                    <div class="alert alert-danger">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group mb-4 col">
+                                <label for="titleTu" class="form-label">العنوان باللغة التركية</label>
+                                <input type="text" class="form-control" name="title_tu" id="titleTu"
+                                    placeholder="العنوان باللغة التركية"
+                                    value="{{ old('title_tu', $about ? $about->title_tu : '') }}" required>
+                                @error('title_tu')
+                                    <div class="alert alert-danger">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="form-group mb-4 col">
+                                <label for="title-fr" class="form-label">العنوان باللغة الفرنسية</label>
+                                <input type="text" class="form-control" name="title_fr" id="title-fr"
+                                    placeholder="العنوان باللغة الفرنسية"
+                                    value="{{ old('title_fr', $about ? $about->title_fr : '') }}" required>
+                                @error('title_fr')
+                                    <div class="alert alert-danger">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
                         <div class="form-group mb-4">
                             <label for="descriptionAr">الوصف باللغة العربية</label>
                             <textarea class="form-control" id="descriptionAr" name="description_ar" rows="3"
-                                placeholder="الوصف باللغة العربية" required>{{ $word ? $word->description_ar : '' }}</textarea>
+                                placeholder="الوصف باللغة العربية" required>{{ old('description_ar', $about ? $about->description_ar : '') }}</textarea>
                             @error('description_ar')
                                 <div class="alert alert-danger">
                                     {{ $message }}
@@ -28,7 +76,7 @@
                         <div class="form-group mb-4">
                             <label for="descriptionEn">الوصف باللغة الانجليزية</label>
                             <textarea class="form-control" id="descriptionEn" name="description_en" rows="3"
-                                placeholder="الوصف باللغة الانجليزية " required>{{ $word ? $word->description_en : '' }}</textarea>
+                                placeholder="الوصف باللغة الانجليزية " required>{{ old('description_en', $about ? $about->description_en : '') }}</textarea>
                             @error('description_en')
                                 <div class="alert alert-danger">
                                     {{ $message }}
@@ -38,7 +86,7 @@
                         <div class="form-group mb-4">
                             <label for="descriptionTu">الوصف باللغة التركية</label>
                             <textarea class="form-control" id="descriptionTu" name="description_tu" rows="3"
-                                placeholder="الوصف باللغة التركية" required>{{ $word ? $word->description_tu : '' }}</textarea>
+                                placeholder="الوصف باللغة التركية" required>{{ old('description_tu', $about ? $about->description_tu : '') }}</textarea>
                             @error('description_tu')
                                 <div class="alert alert-danger">
                                     {{ $message }}
@@ -48,7 +96,7 @@
                         <div class="form-group mb-4">
                             <label for="descriptionFr">الوصف باللغة الفرنسية</label>
                             <textarea class="form-control" id="descriptionFr" name="description_fr" rows="3"
-                                placeholder="الوصف باللغة الفرنسية" required>{{ $word ? $word->description_fr : '' }}</textarea>
+                                placeholder="الوصف باللغة الفرنسية" required>{{ old('description_fr', $about ? $about->description_fr : '') }}</textarea>
                             @error('description_fr')
                                 <div class="alert alert-danger">
                                     {{ $message }}
@@ -70,7 +118,8 @@
                                 <label class="custom-file-container__custom-file">
                                     <input type="file" name="photo"
                                         class="custom-file-container__custom-file__custom-file-input"
-                                        accept="image/png,image/jpg,image/jpeg" required>
+                                        accept="image/png,image/jpg,image/jpeg"
+                                        {{ $about && $about->photo ? '' : 'required' }}>
                                     {{-- <input type="hidden" name="MAX_FILE_SIZE" value="10485760" /> --}}
                                     <span class="custom-file-container__custom-file__custom-file-control"></span>
                                 </label>
@@ -122,8 +171,17 @@
             $('#descriptionEn').summernote(optionsEn);
             $('#descriptionFr').summernote(optionsEn);
             $('#descriptionTu').summernote(optionsEn);
-
-            new FileUploadWithPreview('myFirstImage');
         });
     </script>
+    @if ($about && $about->photo)
+        <script>
+            new FileUploadWithPreview('myFirstImage', {
+                presetFiles: ["{{ $about->photo }}"]
+            });
+        </script>
+    @else
+        <script>
+            new FileUploadWithPreview('myFirstImage');
+        </script>
+    @endif
 @endpush

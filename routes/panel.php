@@ -45,15 +45,21 @@ Route::prefix('panel')->name('panel.')->group(function () {
 
     Route::middleware('auth')->group(function () {
 
-        Route::view('/', 'cms.pages.home')->name('home');
+
+        Route::view('/', 'cms.pages.home')->name('statistics');
 
         Route::prefix('home')->name('home.')->group(function () {
+
             Route::get('about', [HomeAboutController::class, 'about_eleven'])->name('about');
             Route::post('about', [HomeAboutController::class, 'update_about_eleven'])->name('about.post');
             Route::get('manager', [HomeAboutController::class, 'manager_words'])->name('manager');
             Route::post('manager', [HomeAboutController::class, 'update_manager_words'])->name('manager.post');
-            Route::resource('partners', ElevenPartnersController::class);
-            Route::resource('services', HomeServicesController::class);
+            Route::resource('partners', ElevenPartnersController::class, ['parameters' =>[
+                'partners' => 'elevenPartner'
+            ]]);
+            Route::resource('services', HomeServicesController::class, ['parameters' =>[
+                'services' => 'elevenField'
+            ]]);
             Route::resource('sliders', HomeSlidersController::class);
             Route::resource('testimonials', TestimonialsController::class);
         });

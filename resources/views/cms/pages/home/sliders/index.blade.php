@@ -25,11 +25,11 @@
                             @foreach ($sliders as $slider)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td><img class="img-circle img-bordered-sm" src="{{ Storage::url($slider->photo) }}"
-                                            width="80" alt="Team Work Image"></td>
-                                    <td>{{ \Str::limit($slider->description_ar, 100, '...') }}</td>
+                                    <td><img class="img-circle img-bordered-sm" src="{{ $slider->photo }}" width="80"
+                                            alt="Team Work Image"></td>
+                                    <td>{{ $slider->description_ar }}</td>
                                     <td class="text-center">
-                                        <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                        <div class="btn-group" role="group">
                                             <a href="{{ route('panel.home.sliders.edit', $slider->id) }}"
                                                 class="btn btn-outline-primary">
                                                 <i class="fa-regular fa-pen-to-square"></i>
@@ -51,7 +51,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        {{-- {{ $slider->links() }} --}}
+                        {{ $sliders->links() }}
                     </div>
                 </div>
             </div>

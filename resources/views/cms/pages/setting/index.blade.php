@@ -16,7 +16,7 @@
                     <div class="row">
                         <div class="form-group mb-4 col">
                             <label for="email" class="form-label">البريد الإلكتروني</label>
-                            <input type="text" class="form-control" name="email" id="email"
+                            <input type="email" class="form-control" name="email" id="email"
                                 placeholder="البريد الإلكتروني"
                                 value="{{ old('email', $settings ? $settings->email : '') }}" required>
                         </div>
@@ -101,8 +101,7 @@
                         <label for="photo">صورة الشعار</label>
                         <div class="custom-file-container" data-upload-id="myFirstImage">
                             <label>
-                                <a href="javascript:void(0)" class="custom-file-container__image-clear"
-                                    title="Clear Image">
+                                <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">
                                     <i class="fa-solid fa-xmark"></i> حذف الصورة
                                 </a>
                             </label>

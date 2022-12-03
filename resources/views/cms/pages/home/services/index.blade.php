@@ -26,19 +26,15 @@
                             @foreach ($services as $service)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td><img class="img-circle img-bordered-sm" src="{{ Storage::url($service->photo) }}"
-                                        width="80" alt="Team Work Image"></td>
+                                    <td><img class="img-circle img-bordered-sm" src="{{ $service->photo }}" width="80"
+                                            alt="Team Work Image"></td>
                                     <td>{{ $service->title_ar }}</td>
-                                    <td>{{ \Str::limit($service->description_ar, 100, '...') }}</td>
+                                    <td>{!! \Str::words(strip_tags($service->description_ar), 50, '...') !!}</td>
                                     <td class="text-center">
-                                        <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                        <div class="btn-group" role="group">
                                             <a href="{{ route('panel.home.services.edit', $service->id) }}"
                                                 class="btn btn-outline-primary">
                                                 <i class="fa-regular fa-pen-to-square"></i>
-                                            </a>
-                                            <a href="{{ route('panel.home.services.show', $service->id) }}"
-                                                class="btn btn-outline-primary">
-                                                <i class="fa-regular fa-eye"></i>
                                             </a>
                                             <form action="{{ route('panel.home.services.destroy', $service->id) }}"
                                                 method="POST">
@@ -47,6 +43,10 @@
                                                 <button type="submit" class="btn btn-outline-primary rounded-0"><i
                                                         class="fa-regular fa-trash-can"></i></button>
                                             </form>
+                                            <a href="{{ route('panel.home.services.show', $service->id) }}"
+                                                class="btn btn-outline-primary">
+                                                <i class="fa-regular fa-eye"></i>
+                                            </a>
                                         </div>
                                     </td>
                                 </tr>
@@ -57,7 +57,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        {{-- {{ $service->links() }} --}}
+                        {{ $services->links() }}
                     </div>
                 </div>
             </div>

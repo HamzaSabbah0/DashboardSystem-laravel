@@ -18,8 +18,8 @@ class HomeServicesController extends Controller
      */
     public function index()
     {
-        $services = ElevenField::where('section_title','home_service')->paginate(10);
-        return view('cms.pages.home.services.index' , compact('services'));
+        $services = ElevenField::where('section_title', 'home_service')->paginate(10);
+        return view('cms.pages.home.services.index', compact('services'));
     }
 
     /**
@@ -52,7 +52,7 @@ class HomeServicesController extends Controller
             'photo.size' => 'لا يجب أن تتجاوز الصورة مساحة 3 ميجا',
         ];
 
-        $this->validate($request,$rules,$messages);
+        $this->validate($request, $rules, $messages);
 
         $service = new ElevenField();
 
@@ -65,16 +65,15 @@ class HomeServicesController extends Controller
         $service->title_tu = $request->title_tu;
         $service->title_fr = $request->title_fr;
 
-        if($request->has('photo')){
-            $service->photo = $this->upload_file('photo','home-service');
+        if ($request->has('photo')) {
+            $service->photo = $this->upload_file($request->photo, 'home_service');
         }
 
         $service->section_title = 'home_service';
 
         $service->save();
-        Session::flash('success','تمت العملية بنجاح');
+        Session::flash('success', 'تمت العملية بنجاح');
         return redirect()->back();
-
     }
 
     /**
@@ -83,9 +82,9 @@ class HomeServicesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(ElevenField $service)
+    public function show(ElevenField $elevenField)
     {
-        return view('cms.pages.home.services.show' , compact('service'));
+        return view('cms.pages.home.services.show', compact('elevenField'));
     }
 
     /**
@@ -94,9 +93,9 @@ class HomeServicesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(ElevenField $service)
+    public function edit(ElevenField $elevenField)
     {
-        return view('cms.pages.home.services.edit' , compact('service'));
+        return view('cms.pages.home.services.edit', compact('elevenField'));
     }
 
     /**
@@ -106,12 +105,11 @@ class HomeServicesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ElevenField $service)
+    public function update(Request $request, ElevenField $elevenField)
     {
-        //
         $rules = [
             '*' => 'required',
-            'photo' => 'image|mimes:png,jpg,jpeg|max:3000',
+            'photo' => 'nullable|image|mimes:png,jpg,jpeg|max:3000',
         ];
         $messages = [
             '*.required' => 'هذا الحقل مطلوب',
@@ -120,27 +118,27 @@ class HomeServicesController extends Controller
             'photo.size' => 'لا يجب أن تتجاوز الصورة مساحة 3 ميجا',
         ];
 
-        $this->validate($request,$rules,$messages);
+        $this->validate($request, $rules, $messages);
 
-        $service->description_ar = $request->description_ar;
-        $service->description_en = $request->description_en;
-        $service->description_tu = $request->description_tu;
-        $service->description_fr = $request->description_fr;
-        $service->title_ar = $request->title_ar;
-        $service->title_en = $request->title_en;
-        $service->title_tu = $request->title_tu;
-        $service->title_fr = $request->title_fr;
+        $elevenField->description_ar = $request->description_ar;
+        $elevenField->description_en = $request->description_en;
+        $elevenField->description_tu = $request->description_tu;
+        $elevenField->description_fr = $request->description_fr;
+        $elevenField->title_ar = $request->title_ar;
+        $elevenField->title_en = $request->title_en;
+        $elevenField->title_tu = $request->title_tu;
+        $elevenField->title_fr = $request->title_fr;
 
-        if($request->has('photo')){
-            $path = parse_url($service->photo);
+        if ($request->has('photo')) {
+            $path = parse_url($elevenField->photo);
             unlink(public_path($path['path']));
-            $service->photo = $this->upload_file('photo','home-service');
+            $elevenField->photo = $this->upload_file($request->photo, 'home_service');
         }
 
-        $service->section_title = 'home_service';
+        $elevenField->section_title = 'home_service';
 
-        $service->save();
-        Session::flash('success','تمت العملية بنجاح');
+        $elevenField->save();
+        Session::flash('success', 'تمت العملية بنجاح');
         return redirect()->back();
     }
 
@@ -150,14 +148,13 @@ class HomeServicesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ElevenField $service)
+    public function destroy(ElevenField $elevenField)
     {
-        //
-        $path = parse_url($service->photo);
+        $path = parse_url($elevenField->photo);
         unlink(public_path($path['path']));
 
-        $service->delete();
-        Session::flash('success','تمت العملية بنجاح');
+        $elevenField->delete();
+        Session::flash('success', 'تمت العملية بنجاح');
         return redirect()->back();
     }
 }

@@ -18,8 +18,8 @@ class HomeSlidersController extends Controller
      */
     public function index()
     {
-        $sliders = Slider::where('section_title','home_page')->paginate(10);
-        return view('cms.pages.home.sliders.index' , compact('sliders'));
+        $sliders = Slider::where('section_title', 'home_page')->paginate(10);
+        return view('cms.pages.home.sliders.index', compact('sliders'));
     }
 
     /**
@@ -56,15 +56,15 @@ class HomeSlidersController extends Controller
 
         $slider = new Slider();
 
-        if ($request->hasFile('photo')) {
-            $slider->photo = $this->upload_file($request->photo, 'home-sliders');
-        }
-
         $slider->description_ar = $request->description_ar;
         $slider->description_en = $request->description_en;
         $slider->description_tu = $request->description_tu;
         $slider->description_fr = $request->description_fr;
         $slider->section_title = 'home_page';
+
+        if ($request->hasFile('photo')) {
+            $slider->photo = $this->upload_file($request->photo, 'home_sliders');
+        }
 
         $slider->save();
         Session::flash('success', 'تمت العملية بنجاح');
@@ -79,7 +79,7 @@ class HomeSlidersController extends Controller
      */
     public function edit(Slider $slider)
     {
-        return view('cms.pages.home.sliders.edit' , compact('slider'));
+        return view('cms.pages.home.sliders.edit', compact('slider'));
     }
 
     /**
@@ -105,17 +105,18 @@ class HomeSlidersController extends Controller
 
         $this->validate($request, $rules, $messages);
 
-        if ($request->hasFile('photo')) {
-            $path = parse_url($slider->photo);
-            unlink(public_path($path['path']));
-            $slider->photo = $this->upload_file($request->photo, 'home-sliders');
-        }
-
         $slider->description_ar = $request->description_ar;
         $slider->description_en = $request->description_en;
         $slider->description_tu = $request->description_tu;
         $slider->description_fr = $request->description_fr;
         $slider->section_title = 'home_page';
+
+
+        if ($request->hasFile('photo')) {
+            $path = parse_url($slider->photo);
+            unlink(public_path($path['path']));
+            $slider->photo = $this->upload_file($request->photo, 'home_sliders');
+        }
 
         $slider->save();
         Session::flash('success', 'تمت العملية بنجاح');

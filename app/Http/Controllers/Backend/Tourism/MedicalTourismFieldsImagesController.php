@@ -29,7 +29,7 @@ class MedicalTourismFieldsImagesController extends Controller
      */
     public function create()
     {
-        return view('cms.pages.eleven_fields_image.create');
+        return view('cms.pages.medical_tourism.fields_images.create');
     }
 
     /**
@@ -75,7 +75,7 @@ class MedicalTourismFieldsImagesController extends Controller
     public function show()
     {
         $image = ElevenFieldsImage::where('section_title','medical_tourism')->get();
-        return view('cms.pages.eleven_fields_image.show', compact('image'));
+        return view('cms.pages.medical_tourism.fields_images.show', compact('image'));
     }
 
     /**
@@ -86,7 +86,7 @@ class MedicalTourismFieldsImagesController extends Controller
      */
     public function edit(ElevenFieldsImage $image)
     {
-        return view('cms.pages.eleven_fields_image.edit', compact('image'));
+        return view('cms.pages.medical_tourism.fields_images.edit', compact('image'));
     }
 
     /**

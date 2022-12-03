@@ -22,7 +22,7 @@ class HomeAboutController extends Controller
     {
         $rules = [
             '*' => 'required',
-            'photo' => 'image|mimes:png,jpg,jpeg|max:3000',
+            'photo' => 'nullable|image|mimes:png,jpg,jpeg|max:3000',
         ];
 
         $messages = [
@@ -34,7 +34,7 @@ class HomeAboutController extends Controller
 
         $this->validate($request, $rules, $messages);
 
-        About::updateOrCreate(['section_title' => 'home_about'], [
+        $data = [
             'title_ar' => $request->title_ar,
             'title_en' => $request->title_en,
             'title_tu' => $request->title_tu,
@@ -43,9 +43,14 @@ class HomeAboutController extends Controller
             'description_en' => $request->description_en,
             'description_tu' => $request->description_tu,
             'description_fr' => $request->description_fr,
-            'photo' => $this->upload_file($request->photo, 'abouts'),
             'section_title' => 'home_about',
-        ]);
+        ];
+
+        if ($request->hasFile('photo')) {
+            $data['photo'] = $this->upload_file($request->photo, 'abouts');
+        }
+
+        About::updateOrCreate(['section_title' => 'home_about'], $data);
 
         Session::flash('success', 'تمت العملية بنجاح');
         return redirect()->back();
@@ -53,15 +58,15 @@ class HomeAboutController extends Controller
 
     public function manager_words()
     {
-        $word = About::where('section_title','manager_words')->first();
-        return view('cms.pages.home.manager_words.index' , compact('word'));
+        $about = About::where('section_title', 'manager_words')->first();
+        return view('cms.pages.home.manager_words.index', compact('about'));
     }
 
     public function update_manager_words(Request $request)
     {
         $rules = [
             '*' => 'required',
-            'photo' => 'image|mimes:png,jpg,jpeg|max:3000',
+            'photo' => 'nullable|image|mimes:png,jpg,jpeg|max:3000',
         ];
 
         $messages = [
@@ -73,7 +78,7 @@ class HomeAboutController extends Controller
 
         $this->validate($request, $rules, $messages);
 
-        About::updateOrCreate(['section_title' => 'manager_words'], [
+        $data = [
             'title_ar' => $request->title_ar,
             'title_en' => $request->title_en,
             'title_tu' => $request->title_tu,
@@ -82,9 +87,14 @@ class HomeAboutController extends Controller
             'description_en' => $request->description_en,
             'description_tu' => $request->description_tu,
             'description_fr' => $request->description_fr,
-            'photo' => $this->upload_file($request->photo, 'abouts'),
             'section_title' => 'manager_words',
-        ]);
+        ];
+
+        if ($request->hasFile('photo')) {
+            $data['photo'] = $this->upload_file($request->photo, 'abouts');
+        }
+
+        About::updateOrCreate(['section_title' => 'manager_words'], $data);
 
         Session::flash('success', 'تمت العملية بنجاح');
         return redirect()->back();

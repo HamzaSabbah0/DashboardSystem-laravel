@@ -55,11 +55,6 @@ class TestimonialsController extends Controller
         $this->validate($request, $rules, $messages);
 
         $testimonial = new Testimonial();
-
-        if ($request->hasFile('photo')) {
-            $testimonial->photo = $this->upload_file($request->photo, 'testimonials');
-        }
-
         $testimonial->title_ar = $request->title_ar;
         $testimonial->title_en = $request->title_en;
         $testimonial->title_tu = $request->title_tu;
@@ -77,7 +72,12 @@ class TestimonialsController extends Controller
         $testimonial->career_title_tu = $request->career_title_tu;
         $testimonial->career_title_fr = $request->career_title_fr;
 
+        if ($request->hasFile('photo')) {
+            $testimonial->photo = $this->upload_file($request->photo, 'testimonials');
+        }
+
         $testimonial->save();
+
         Session::flash('success', 'تمت العملية بنجاح');
         return redirect()->back();
     }
@@ -113,7 +113,6 @@ class TestimonialsController extends Controller
      */
     public function update(Request $request, Testimonial $testimonial)
     {
-        //
         $rules = [
             '*' => 'required',
             'photo' => 'image|mimes:png,jpg,jpeg|max:3000',
@@ -126,12 +125,6 @@ class TestimonialsController extends Controller
         ];
 
         $this->validate($request, $rules, $messages);
-
-        if ($request->hasFile('photo')) {
-            $path = parse_url($testimonial->photo);
-            unlink(public_path($path['path']));
-            $testimonial->photo = $this->upload_file($request->photo, 'testimonials');
-        }
 
         $testimonial->title_ar = $request->title_ar;
         $testimonial->title_en = $request->title_en;
@@ -150,6 +143,12 @@ class TestimonialsController extends Controller
         $testimonial->career_title_tu = $request->career_title_tu;
         $testimonial->career_title_fr = $request->career_title_fr;
 
+        if ($request->hasFile('photo')) {
+            $path = parse_url($testimonial->photo);
+            unlink(public_path($path['path']));
+            $testimonial->photo = $this->upload_file($request->photo, 'testimonials');
+        }
+
         $testimonial->save();
         Session::flash('success', 'تمت العملية بنجاح');
         return redirect()->back();
@@ -163,7 +162,6 @@ class TestimonialsController extends Controller
      */
     public function destroy(Testimonial $testimonial)
     {
-        //
         $path = parse_url($testimonial->photo);
         unlink(public_path($path['path']));
 

@@ -1,7 +1,6 @@
 @extends('cms._layout.app')
 
 @section('content')
-
     <div id="tableHover" class="col-lg-12 col-12 layout-spacing layout-top-spacing">
         <div class="statbox widget box box-shadow">
             <div class="widget-header">
@@ -26,25 +25,25 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($services as $service)
+                            @foreach ($testimonials as $testimonial)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td><img src= {{$service->photo}} alt='new' width='70' height='70'></td>
-                                    <td>{{ $service->name_ar }}</td>
-                                    <td>{{ $service->title_ar }}</td>
-                                    <td>{{ $service->career_title_ar }}</td>
-                                    <td>{{ \Str::limit($service->description_ar, 100, '...') }}</td>
+                                    <td><img src={{ $testimonial->photo }} alt='new' width='70' height='70'></td>
+                                    <td>{{ $testimonial->name_ar }}</td>
+                                    <td>{{ $testimonial->title_ar }}</td>
+                                    <td>{{ $testimonial->career_title_ar }}</td>
+                                    <td>{!! \Str::words(strip_tags($testimonial->description_ar), 50, '...') !!}</td>
                                     <td class="text-center">
                                         <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                            <a href="{{ route('panel.home.testimonials.edit', $service->id) }}"
+                                            <a href="{{ route('panel.home.testimonials.edit', $testimonial->id) }}"
                                                 class="btn btn-outline-primary">
                                                 <i class="fa-regular fa-pen-to-square"></i>
                                             </a>
-                                            <a href="{{ route('panel.home.testimonials.show', $service->id) }}"
+                                            <a href="{{ route('panel.home.testimonials.show', $testimonial->id) }}"
                                                 class="btn btn-outline-primary">
                                                 <i class="fa-regular fa-eye"></i>
                                             </a>
-                                            <form action="{{ route('panel.home.testimonials.destroy', $service->id) }}"
+                                            <form action="{{ route('panel.home.testimonials.destroy', $testimonial->id) }}"
                                                 method="POST">
                                                 @csrf
                                                 @method('DELETE')
@@ -61,11 +60,10 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        {{-- {{ $service->links() }} --}}
+                        {{ $testimonials->links() }}
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 @endsection
