@@ -12,48 +12,8 @@
                     </div>
                 </div>
                 <div class="widget-content widget-content-area">
-                    <form method="POST" action="{{route('panel.general.tourism.sliders.store')}}">
+                    <form method="POST" action="{{route('panel.general.tourism.sliders.store')}}" enctype="multipart/form-data">
                         @csrf
-                        <div class="form-group mb-4">
-                            <label for="descriptionAr">الوصف باللغة العربية</label>
-                            <textarea class="form-control" id="descriptionAr" name="description_ar" rows="3" placeholder="الوصف باللغة العربة"
-                                required></textarea>
-                            @error('description_ar')
-                                <div class="alert alert-danger">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                        <div class="form-group mb-4">
-                            <label for="descriptionEn">الوصف باللغة الانجليزية</label>
-                            <textarea class="form-control" id="descriptionEn" name="description_en" rows="3"
-                                placeholder="الوصف باللغة الانجليزية " required></textarea>
-                            @error('description_en')
-                                <div class="alert alert-danger">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                        <div class="form-group mb-4">
-                            <label for="descriptionTu">الوصف باللغة التركية</label>
-                            <textarea class="form-control" id="descriptionTu" name="description_tu" rows="3"
-                                placeholder="الوصف باللغة التركية" required></textarea>
-                            @error('description_tu')
-                                <div class="alert alert-danger">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                        <div class="form-group mb-4">
-                            <label for="descriptionFr">الوصف باللغة الفرنسية</label>
-                            <textarea class="form-control" id="descriptionFr" name="description_fr" rows="3"
-                                placeholder="الوصف باللغة الفرنسية" required></textarea>
-                            @error('description_fr')
-                                <div class="alert alert-danger">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
                         <div class="form-group mb-4">
                             <label for="photo">صورة الغلاف</label>
                             <div class="custom-file-container" data-upload-id="myFirstImage">
@@ -87,40 +47,6 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
-            let optionsAr = {
-                placeholder: 'اكتب هنا...',
-                tabsize: 2,
-                height: 200,
-                lang: 'ar-AR',
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'underline', 'clear']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['table', ['table']],
-                    ['insert', ['link', 'picture', 'video']],
-                    ['view', ['codeview', 'help']]
-                ]
-            };
-            let optionsEn = {
-                placeholder: 'اكتب هنا...',
-                tabsize: 2,
-                height: 200,
-                lang: 'en-US',
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'underline', 'clear']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['table', ['table']],
-                    ['insert', ['link', 'picture', 'video']],
-                    ['view', ['codeview', 'help']]
-                ]
-            };
-            $('#descriptionAr').summernote(optionsAr);
-            $('#descriptionEn').summernote(optionsEn);
-            $('#descriptionFr').summernote(optionsEn);
-            $('#descriptionTu').summernote(optionsEn);
 
             new FileUploadWithPreview('myFirstImage');
         });

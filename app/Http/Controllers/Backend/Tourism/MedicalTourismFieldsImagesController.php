@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Tourism;
 
 use App\Http\Controllers\Controller;
+use App\Models\ElevenField;
 use App\Models\ElevenFieldsImage;
 use App\Traits\FileManager;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class MedicalTourismFieldsImagesController extends Controller
      */
     public function index()
     {
-        $images = ElevenFieldsImage::where('section_title','medical_tourism')->paginate(10);
+        $images = ElevenFieldsImage::where('section_title','medical_field')->paginate(10);
         return view('cms.pages.medical_tourism.fields_images.index', compact('images'));
     }
 
@@ -29,7 +30,8 @@ class MedicalTourismFieldsImagesController extends Controller
      */
     public function create()
     {
-        return view('cms.pages.medical_tourism.fields_images.create');
+        $elevenFields = ElevenField::where('section_title', 'medical_field')->get();
+        return view('cms.pages.medical_tourism.fields_images.create' , compact('elevenFields'));
     }
 
     /**
@@ -41,9 +43,11 @@ class MedicalTourismFieldsImagesController extends Controller
     public function store(Request $request)
     {
         $rules = [
+            'eleven_field_id' => 'required|integer|exists:eleven_fields,id',
             'photo' => 'required|image|mimes:png,jpg,jpeg|max:3000',
         ];
         $messges = [
+            'eleven_field_id.required' => 'هذا الحقل مطلوب',
             'photo.required' => 'هذا الحقل مطلوب',
             'photo.image' => 'يجب أن بكون الملف المرفق صورة',
             'photo.mimes' => 'صيغة الملف يجب أن تكون من نوع :mimes',
@@ -55,27 +59,15 @@ class MedicalTourismFieldsImagesController extends Controller
         $image = new ElevenFieldsImage();
 
         if ($request->hasFile('photo')) {
-            $image->photo = $this->upload_file($request->photo, 'medicalField-images');
+            $image->photo = $this->upload_file($request->photo, 'medicalField_images');
         }
 
+        $image->eleven_field_id = $request->eleven_field_id;
         $image->section_title = 'medical_tourism';
-        $image->eleven_field_id = '1';
 
         $image->save();
         Session::flash('success', 'تمت العملية بنجاح');
         return redirect()->back();
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show()
-    {
-        $image = ElevenFieldsImage::where('section_title','medical_tourism')->get();
-        return view('cms.pages.medical_tourism.fields_images.show', compact('image'));
     }
 
     /**
@@ -84,9 +76,10 @@ class MedicalTourismFieldsImagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(ElevenFieldsImage $image)
+    public function edit($id)
     {
-        return view('cms.pages.medical_tourism.fields_images.edit', compact('image'));
+        $elevenFields = ElevenField::where('section_title', 'medical_field')->get();
+        return view('cms.pages.medical_tourism.fields_images.edit' , compact('elevenFieldsImage','elevenFields'));
     }
 
     /**
@@ -99,10 +92,11 @@ class MedicalTourismFieldsImagesController extends Controller
     public function update(Request $request, ElevenFieldsImage $image)
     {
         $rules = [
-            'photo' => 'required|image|mimes:png,jpg,jpeg|max:3000',
+            'eleven_field_id' => 'required|integer|exists:eleven_fields,id',
+            'photo' => 'nullable|image|mimes:png,jpg,jpeg|max:3000',
         ];
         $messges = [
-            'photo.required' => 'هذا الحقل مطلوب',
+            'eleven_field_id.required' => 'هذا الحقل مطلوب',
             'photo.image' => 'يجب أن بكون الملف المرفق صورة',
             'photo.mimes' => 'صيغة الملف يجب أن تكون من نوع :mimes',
             'photo.size' => 'لا يجب أن تتجاوز الصورة مساحة 3 ميجا',
@@ -113,11 +107,11 @@ class MedicalTourismFieldsImagesController extends Controller
         if ($request->hasFile('photo')) {
             $path = parse_url($image->photo);
             unlink(public_path($path['path']));
-            $image->photo = $this->upload_file($request->photo, 'medicalField-images');
+            $image->photo = $this->upload_file($request->photo, 'medicalField_images');
         }
 
+        $image->eleven_field_id = $request->eleven_field_id;
         $image->section_title = 'medical_tourism';
-        $image->eleven_field_id = '1';
 
         $image->save();
         Session::flash('success', 'تمت العملية بنجاح');

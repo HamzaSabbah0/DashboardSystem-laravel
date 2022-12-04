@@ -19,6 +19,7 @@ class TradeAboutController extends Controller
     {
         $rules = [
             '*' => 'required',
+            'files' =>'nullable',
         ];
 
         $messages = [

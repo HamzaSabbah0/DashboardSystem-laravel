@@ -26,7 +26,7 @@
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td>{{ $field->title_ar }}</td>
-                                    <td>{{ \Str::limit($field->description_ar, 100, '...') }}</td>
+                                    <td>{{ \Str::words(strip_tags($field->description_ar), 50, '...') }}</td>
                                     <td class="text-center">
                                         <div class="btn-group" role="group" aria-label="Basic outlined example">
                                             <a href="{{ route('panel.real.estate.fields.edit', $field->id) }}"
@@ -54,7 +54,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        {{-- {{ $fields->links() }} --}}
+                        {{ $fields->links() }}
                     </div>
                 </div>
             </div>

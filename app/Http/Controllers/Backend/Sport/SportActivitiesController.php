@@ -64,11 +64,12 @@ class SportActivitiesController extends Controller
         $activity->description_en = $request->description_en;
         $activity->description_tu = $request->description_tu;
         $activity->description_fr = $request->description_fr;
-        $activity->section_title = 'sport';
 
         if ($request->hasFile('photo')) {
             $activity->photo = $this->upload_file($request->photo, 'activities');
         }
+
+        $activity->section_title = 'sport';
 
         $activity->save();
         Session::flash('success', 'تمت العملية بنجاح');
@@ -81,9 +82,9 @@ class SportActivitiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(ElevenActivity $activity)
+    public function show(ElevenActivity $elevenActivity)
     {
-        return view('cms.pages.sport.activities.show', compact('activity'));
+        return view('cms.pages.sport.activities.show', compact('elevenActivity'));
     }
 
     /**
@@ -92,9 +93,9 @@ class SportActivitiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(ElevenActivity $activity)
+    public function edit(ElevenActivity $elevenActivity)
     {
-        return view('cms.pages.sport.activities.edit', compact('activity'));
+        return view('cms.pages.sport.activities.edit', compact('elevenActivity'));
     }
 
     /**
@@ -104,12 +105,12 @@ class SportActivitiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ElevenActivity $activity)
+    public function update(Request $request, ElevenActivity $elevenActivity)
     {
 
         $rules = [
             '*' => 'required',
-            'photo' => 'image|mimes:png,jpg,jpeg|max:3000',
+            'photo' => 'nullable|image|mimes:png,jpg,jpeg|max:3000',
         ];
         $messges = [
             '*.required' => 'هذا الحقل مطلوب',
@@ -120,23 +121,24 @@ class SportActivitiesController extends Controller
 
         $this->validate($request, $rules, $messges);
 
-        $activity->title_ar = $request->title_ar;
-        $activity->title_en = $request->title_en;
-        $activity->title_tu = $request->title_tu;
-        $activity->title_fr = $request->title_fr;
-        $activity->description_ar = $request->description_ar;
-        $activity->description_en = $request->description_en;
-        $activity->description_tu = $request->description_tu;
-        $activity->description_fr = $request->description_fr;
-        $activity->section_title = 'sport';
+        $elevenActivity->title_ar = $request->title_ar;
+        $elevenActivity->title_en = $request->title_en;
+        $elevenActivity->title_tu = $request->title_tu;
+        $elevenActivity->title_fr = $request->title_fr;
+        $elevenActivity->description_ar = $request->description_ar;
+        $elevenActivity->description_en = $request->description_en;
+        $elevenActivity->description_tu = $request->description_tu;
+        $elevenActivity->description_fr = $request->description_fr;
 
         if ($request->hasFile('photo')) {
-            $path = parse_url($activity->photo);
+            $path = parse_url($elevenActivity->photo);
             unlink(public_path($path['path']));
-            $activity->photo = $this->upload_file($request->photo, 'activities');
+            $elevenActivity->photo = $this->upload_file($request->photo, 'activities');
         }
 
-        $activity->save();
+        $elevenActivity->section_title = 'sport';
+
+        $elevenActivity->save();
         Session::flash('success', 'تمت العملية بنجاح');
         return redirect()->back();
     }
@@ -147,12 +149,12 @@ class SportActivitiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ElevenActivity $activity)
+    public function destroy(ElevenActivity $elevenActivity)
     {
-        $path = parse_url($activity->photo);
+        $path = parse_url($elevenActivity->photo);
         unlink(public_path($path['path']));
 
-        $activity->delete();
+        $elevenActivity->delete();
 
         Session::flash('success', 'تمت العملية بنجاح');
         return redirect()->back();

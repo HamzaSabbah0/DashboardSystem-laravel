@@ -56,14 +56,15 @@ class MedicalTourismSlidersController extends Controller
 
         $slider = new Slider();
 
-        if ($request->hasFile('photo')) {
-            $slider->photo = $this->upload_file($request->photo, 'medicalTourism-sliders');
-        }
-
         $slider->description_ar = $request->description_ar;
         $slider->description_en = $request->description_en;
         $slider->description_tu = $request->description_tu;
         $slider->description_fr = $request->description_fr;
+
+        if ($request->hasFile('photo')) {
+            $slider->photo = $this->upload_file($request->photo, 'medicalTourism_sliders');
+        }
+
         $slider->section_title = 'medical_tourism';
 
         $slider->save();
@@ -94,7 +95,7 @@ class MedicalTourismSlidersController extends Controller
         //
         $rules = [
             '*' => 'required',
-            'photo' => 'image|mimes:png,jpg,jpeg|max:3000',
+            'photo' => 'nullable|image|mimes:png,jpg,jpeg|max:3000',
         ];
         $messages = [
             '*.required' => 'هذا الحقل مطلوب',
@@ -105,16 +106,17 @@ class MedicalTourismSlidersController extends Controller
 
         $this->validate($request, $rules, $messages);
 
-        if ($request->hasFile('photo')) {
-            $path = parse_url($slider->photo);
-            unlink(public_path($path['path']));
-            $slider->photo = $this->upload_file($request->photo, 'medicalTourism-sliders');
-        }
-
         $slider->description_ar = $request->description_ar;
         $slider->description_en = $request->description_en;
         $slider->description_tu = $request->description_tu;
         $slider->description_fr = $request->description_fr;
+
+        if ($request->hasFile('photo')) {
+            $path = parse_url($slider->photo);
+            unlink(public_path($path['path']));
+            $slider->photo = $this->upload_file($request->photo, 'medicalTourism_sliders');
+        }
+
         $slider->section_title = 'medical_tourism';
 
         $slider->save();
@@ -135,7 +137,6 @@ class MedicalTourismSlidersController extends Controller
         unlink(public_path($path['path']));
 
         $slider->delete();
-
         Session::flash('success', 'تمت العملية بنجاح');
         return redirect()->back();
     }

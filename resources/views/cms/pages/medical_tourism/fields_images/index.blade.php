@@ -25,16 +25,17 @@
                             @foreach ($images as $image)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td><img class="img-circle img-bordered-sm" src="{{ Storage::url($image->photo) }}"
-                                            width="80" alt="Team Work Image"></td>
-                                    <td>{{ $image->section_title }}</td>
+                                    <td><img class="img-circle img-bordered-sm" src="{{ $image->photo }}" width="80"
+                                            alt="Team Work Image"></td>
+                                    <td>{{ $image->eleven_field->title_ar }}</td>
                                     <td class="text-center">
                                         <div class="btn-group" role="group" aria-label="Basic outlined example">
                                             <a href="{{ route('panel.medical.tourism.fields-images.edit', $image->id) }}"
                                                 class="btn btn-outline-primary">
                                                 <i class="fa-regular fa-pen-to-square"></i>
                                             </a>
-                                            <form action="{{ route('panel.medical.tourism.fields-images.destroy', $image->id) }}"
+                                            <form
+                                                action="{{ route('panel.medical.tourism.fields-images.destroy', $image->id) }}"
                                                 method="POST">
                                                 @csrf
                                                 @method('DELETE')
@@ -51,7 +52,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        {{-- {{ $image->links() }} --}}
+                        {{ $images->links() }}
                     </div>
                 </div>
             </div>

@@ -24,15 +24,16 @@
                             @foreach ($partners as $partner)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td><img class="img-circle img-bordered-sm" src="{{ Storage::url($partner->photo) }}"
-                                            width="80" alt="Team Work Image"></td>
+                                    <td><img class="img-circle img-bordered-sm" src="{{ $partner->photo }}" width="80"
+                                            alt="Team Work Image"></td>
                                     <td class="text-center">
                                         <div class="btn-group" role="group" aria-label="Basic outlined example">
                                             <a href="{{ route('panel.general.tourism.partners.edit', $partner->id) }}"
                                                 class="btn btn-outline-primary">
                                                 <i class="fa-regular fa-pen-to-square"></i>
                                             </a>
-                                            <form action="{{ route('panel.general.tourism.partners.destroy', $partner->id) }}"
+                                            <form
+                                                action="{{ route('panel.general.tourism.partners.destroy', $partner->id) }}"
                                                 method="POST">
                                                 @csrf
                                                 @method('DELETE')
@@ -49,7 +50,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        {{-- {{ $partner->links() }} --}}
+                        {{ $partners->links() }}
                     </div>
                 </div>
             </div>

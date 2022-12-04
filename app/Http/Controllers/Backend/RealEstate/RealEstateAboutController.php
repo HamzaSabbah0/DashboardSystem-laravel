@@ -19,6 +19,7 @@ class RealEstateAboutController extends Controller
     {
         $rules = [
             '*' => 'required',
+            'files' =>'nullable',
         ];
 
         $messages = [
@@ -28,7 +29,10 @@ class RealEstateAboutController extends Controller
         $this->validate($request, $rules, $messages);
 
         About::updateOrCreate(['section_title' => 'about_realEstate'], [
-            // dd($request->all())
+            'title_ar' => $request->title_ar,
+            'title_en' => $request->title_en,
+            'title_tu' => $request->title_tu,
+            'title_fr' => $request->title_fr,
             'description_ar' => $request->description_ar,
             'description_en' => $request->description_en,
             'description_tu' => $request->description_tu,
@@ -38,5 +42,6 @@ class RealEstateAboutController extends Controller
 
         Session::flash('success', 'تمت العملية بنجاح');
         return redirect()->back();
+
     }
 }

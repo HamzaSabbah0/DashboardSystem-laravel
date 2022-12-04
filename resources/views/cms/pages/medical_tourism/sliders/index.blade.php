@@ -25,9 +25,11 @@
                             @foreach ($sliders as $slider)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td><img class="img-circle img-bordered-sm" src="{{ Storage::url($slider->photo) }}"
-                                            width="80" alt="Team Work Image"></td>
-                                    <td>{{ \Str::limit($slider->description_ar, 100, '...') }}</td>
+                                    <td>
+                                        <img class="img-circle img-bordered-sm" src="{{ $slider->photo }}" width="80"
+                                            alt="Team Work Image">
+                                    </td>
+                                    <td>{{ \Str::words(strip_tags($slider->description_ar), 50, '...') }}</td>
                                     <td class="text-center">
                                         <div class="btn-group" role="group" aria-label="Basic outlined example">
                                             <a href="{{ route('panel.medical.tourism.sliders.edit', $slider->id) }}"
@@ -51,7 +53,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        {{-- {{ $slider->links() }} --}}
+                        {{ $sliders->links() }}
                     </div>
                 </div>
             </div>

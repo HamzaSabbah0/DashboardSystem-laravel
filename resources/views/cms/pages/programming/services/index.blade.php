@@ -26,10 +26,10 @@
                             @foreach ($services as $service)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td><img class="img-circle img-bordered-sm" src="{{ Storage::url($service->photo) }}"
+                                    <td><img class="img-circle img-bordered-sm" src="{{ $service->photo }}"
                                         width="80" alt="Team Work Image"></td>
                                     <td>{{ $service->title_ar }}</td>
-                                    <td>{{ \Str::limit($service->description_ar, 100, '...') }}</td>
+                                    <td>{{ \Str::words(strip_tags($service->description_ar), 100, '...') }}</td>
                                     <td class="text-center">
                                         <div class="btn-group" role="group" aria-label="Basic outlined example">
                                             <a href="{{ route('panel.programming.services.edit', $service->id) }}"
@@ -57,7 +57,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        {{-- {{ $service->links() }} --}}
+                        {{ $services->links() }}
                     </div>
                 </div>
             </div>

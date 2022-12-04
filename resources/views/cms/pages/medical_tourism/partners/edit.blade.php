@@ -12,7 +12,8 @@
                     </div>
                 </div>
                 <div class="widget-content widget-content-area">
-                    <form action="{{ route('panel.medical.tourism.partners.update','partner') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('panel.medical.tourism.partners.update', $elevenPartner->id) }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="form-group mb-4">
@@ -30,7 +31,7 @@
                                 <label class="custom-file-container__custom-file">
                                     <input type="file" name="photo"
                                         class="custom-file-container__custom-file__custom-file-input"
-                                        accept="image/png,image/jpg,image/jpeg" required>
+                                        accept="image/png,image/jpg,image/jpeg">
                                     {{-- <input type="hidden" name="MAX_FILE_SIZE" value="10485760" /> --}}
                                     <span class="custom-file-container__custom-file__custom-file-control"></span>
                                 </label>
@@ -49,7 +50,9 @@
     <script>
         $(document).ready(function() {
 
-            new FileUploadWithPreview('myFirstImage');
+            new FileUploadWithPreview('myFirstImage', {
+                presetFiles: ["{{ $elevenPartner->photo }}"]
+            });
 
         });
     </script>

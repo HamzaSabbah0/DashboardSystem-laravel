@@ -16,6 +16,14 @@
                     <form action="{{ route('panel.trade.fields-images.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group mb-4">
+                            <label>Trade Fields</label>
+                            <select class="form-select  form-select-lg" name="eleven_field_id">
+                                @foreach ($elevenFields as $elevenField)
+                                    <option value="{{$elevenField->id}}">{{$elevenField->title_ar}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group mb-4">
                             <label for="photo">صورة المجال</label>
                             <div class="custom-file-container" data-upload-id="myFirstImage">
                                 <label>
@@ -47,6 +55,8 @@
 
 @push('scripts')
     <script>
-        new FileUploadWithPreview('myFirstImage');
+        $(document).ready(function() {
+            new FileUploadWithPreview('myFirstImage');
+        });
     </script>
 @endpush

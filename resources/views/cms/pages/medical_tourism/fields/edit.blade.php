@@ -12,14 +12,14 @@
                     </div>
                 </div>
                 <div class="widget-content widget-content-area">
-                    <form action="{{ route('panel.medical.tourism.fields.update','field') }}" method="POST">
+                    <form action="{{ route('panel.medical.tourism.fields.update', $elevenField->id) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="row">
                             <div class="form-group mb-4 col">
                                 <label for="titleAr" class="form-label">العنوان باللغة العربية</label>
                                 <input type="text" class="form-control" name="title_ar" id="titleAr"
-                                    placeholder="العنوان باللغة العربية" value="{{ old('title_ar', $field ? $field->title_ar : '') }}" required>
+                                    placeholder="العنوان باللغة العربية" value="{{ old('title_ar', $elevenField ? $elevenField->title_ar : '') }}" required>
                                 @error('title_ar')
                                     <div class="alert alert-danger">
                                         {{ $message }}
@@ -29,7 +29,7 @@
                             <div class="form-group mb-4 col">
                                 <label for="titleEn" class="form-label">العنوان باللغة الانجليزية</label>
                                 <input type="text" class="form-control" name="title_en" id="titleEn"
-                                    placeholder="العنوان باللغة الانجليزية" value="{{ old('title_en', $field ? $field->title_en : '') }}" required>
+                                    placeholder="العنوان باللغة الانجليزية" value="{{ old('title_en', $elevenField ? $elevenField->title_en : '') }}" required>
                                 @error('title_en')
                                     <div class="alert alert-danger">
                                         {{ $message }}
@@ -41,7 +41,7 @@
                             <div class="form-group mb-4 col">
                                 <label for="titleTu" class="form-label">العنوان باللغة التركية</label>
                                 <input type="text" class="form-control" name="title_tu" id="titleTu"
-                                    placeholder="العنوان باللغة التركية" value="{{ old('title_tu', $field ? $field->title_tu : '') }}" required>
+                                    placeholder="العنوان باللغة التركية" value="{{ old('title_tu', $elevenField ? $elevenField->title_tu : '') }}" required>
                                 @error('title_tu')
                                     <div class="alert alert-danger">
                                         {{ $message }}
@@ -51,7 +51,7 @@
                             <div class="form-group mb-4 col">
                                 <label for="titleFr" class="form-label">العنوان باللغة الفرنسية</label>
                                 <input type="text" class="form-control" name="title_fr" id="titleFr"
-                                    placeholder="العنوان باللغة الفرنسية" value="{{ old('title_fr', $field ? $field->title_fr : '') }}" required>
+                                    placeholder="العنوان باللغة الفرنسية" value="{{ old('title_fr', $elevenField ? $elevenField->title_fr : '') }}" required>
                                 @error('title_fr')
                                     <div class="alert alert-danger">
                                         {{ $message }}
@@ -63,7 +63,7 @@
                             <label for="descriptionAr">الوصف باللغة العربية</label>
                             <textarea class="form-control" id="descriptionAr" name="description_ar" rows="3"
                             placeholder="الوصف باللغة العربة" required>
-                                {{ $field ? $field->description_ar : '' }}</textarea>
+                                {{ old('description_ar',$elevenField ? $elevenField->description_ar : '') }}</textarea>
                             @error('description_ar')
                                 <div class="alert alert-danger">
                                     {{ $message }}
@@ -74,7 +74,7 @@
                             <label for="descriptionEn">الوصف باللغة الانجليزية</label>
                             <textarea class="form-control" id="descriptionEn" name="description_en" rows="3"
                                 placeholder="الوصف باللغة الانجليزية " required>
-                                {{ $field ? $field->description_en : '' }}</textarea>
+                                {{ old('description_en',$elevenField ? $elevenField->description_en : '') }}</textarea>
                             @error('description_en')
                                 <div class="alert alert-danger">
                                     {{ $message }}
@@ -85,7 +85,7 @@
                             <label for="descriptionTu">الوصف باللغة التركية</label>
                             <textarea class="form-control" id="descriptionTu" name="description_tu" rows="3"
                                 placeholder="الوصف باللغة التركية" required>
-                                {{ $field ? $field->description_tu : '' }}</textarea>
+                                {{ old('description_tu',$elevenField ? $elevenField->description_tu : '') }}</textarea>
                             @error('description_tu')
                                 <div class="alert alert-danger">
                                     {{ $message }}
@@ -96,7 +96,7 @@
                             <label for="descriptionFr">الوصف باللغة الفرنسية</label>
                             <textarea class="form-control" id="descriptionFr" name="description_fr" rows="3"
                                 placeholder="الوصف باللغة الفرنسية" required>
-                                {{ $field ? $field->description_fr : '' }}</textarea>
+                                {{ old('description_fr',$elevenField ? $elevenField->description_fr : '') }}</textarea>
                             @error('description_fr')
                                 <div class="alert alert-danger">
                                     {{ $message }}

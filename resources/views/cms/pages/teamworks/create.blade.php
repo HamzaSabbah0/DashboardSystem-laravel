@@ -19,7 +19,7 @@
                             <div class="form-group mb-4 col">
                                 <label for="titleAr" class="form-label">الاسم باللغة العربية</label>
                                 <input type="text" class="form-control" name="title_ar" id="titleAr"
-                                    placeholder="الاسم" value="{{ old('title_ar') }}" required>
+                                    placeholder="الاسم باللغة العربية" value="{{ old('title_ar') }}" required>
                                 @error('title_ar')
                                     <div class="alert alert-danger">
                                         {{ $message }}
@@ -28,7 +28,7 @@
                             </div>
                             <div class="form-group mb-4 col">
                                 <label for="titleEn" class="form-label">الاسم باللغة الانجليزية</label>
-                                <input type="text" class="form-control" name="title_en" id="titleEn" placeholder="name"
+                                <input type="text" class="form-control" name="title_en" id="titleEn" placeholder="الاسم باللغة الانجليزية"
                                     value="{{ old('title_en') }}" required>
                                 @error('title_en')
                                     <div class="alert alert-danger">
@@ -40,7 +40,7 @@
                         <div class="row">
                             <div class="form-group mb-4 col">
                                 <label for="titleTu" class="form-label">الاسم باللغة التركية</label>
-                                <input type="text" class="form-control" name="title_tu" id="titleTu" placeholder="İsim"
+                                <input type="text" class="form-control" name="title_tu" id="titleTu" placeholder="الاسم باللغة التركية"
                                     value="{{ old('title_tu') }}" required>
                                 @error('title_tu')
                                     <div class="alert alert-danger">
@@ -51,7 +51,7 @@
                             <div class="form-group mb-4 col">
                                 <label for="titleFr" class="form-label">الاسم باللغة الفرنسية</label>
                                 <input type="text" class="form-control" name="title_fr" id="titleFr"
-                                    placeholder="Le nom" value="{{ old('title_fr') }}" required>
+                                    placeholder="الاسم باللغة الفرنسية" value="{{ old('title_fr') }}" required>
                                 @error('title_fr')
                                     <div class="alert alert-danger">
                                         {{ $message }}
@@ -63,7 +63,7 @@
                             <div class="form-group mb-4 col">
                                 <label for="careerTitleAr" class="form-label">المهنة باللغة العربية</label>
                                 <input type="text" class="form-control" name="career_title_ar" id="careerTitleAr"
-                                    placeholder="المهنة" value="{{ old('career_title_ar') }}" required>
+                                    placeholder="المهنة باللغة العربية" value="{{ old('career_title_ar') }}" required>
                                 @error('career_title_ar')
                                     <div class="alert alert-danger">
                                         {{ $message }}
@@ -73,7 +73,7 @@
                             <div class="form-group mb-4 col">
                                 <label for="careerTitleEr" class="form-label">المهنة باللغة الانجليزية</label>
                                 <input type="text" class="form-control" name="career_title_en" id="careerTitleEr"
-                                    placeholder="career" value="{{ old('career_title_en') }}" required>
+                                    placeholder="المهنة باللغة الانجليزية" value="{{ old('career_title_en') }}" required>
                                 @error('career_title_en')
                                     <div class="alert alert-danger">
                                         {{ $message }}
@@ -85,7 +85,7 @@
                             <div class="form-group mb-4 col">
                                 <label for="careerTitleTu" class="form-label">المهنة باللغة التركية</label>
                                 <input type="text" class="form-control" name="career_title_tu" id="careerTitleTu"
-                                    placeholder="meslek" value="{{ old('career_title_tu') }}" required>
+                                    placeholder="المهنة باللغة التركية" value="{{ old('career_title_tu') }}" required>
                                 @error('career_title_tu')
                                     <div class="alert alert-danger">
                                         {{ $message }}
@@ -95,7 +95,7 @@
                             <div class="form-group mb-4 col">
                                 <label for="careerTitleFr" class="form-label">المهنة باللغة الفرنسية</label>
                                 <input type="text" class="form-control" name="career_title_fr" id="careerTitleFr"
-                                    placeholder="profession" value="{{ old('career_title_fr') }}" required>
+                                    placeholder="المهة باللغة الفرنسية" value="{{ old('career_title_fr') }}" required>
                                 @error('career_title_fr')
                                     <div class="alert alert-danger">
                                         {{ $message }}

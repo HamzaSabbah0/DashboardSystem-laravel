@@ -42,11 +42,10 @@ class SportSlidersController extends Controller
     {
         //
         $rules = [
-            '*' => 'required',
-            'photo' => 'image|mimes:png,jpg,jpeg|max:3000',
+            'photo' => 'required|image|mimes:png,jpg,jpeg|max:3000',
         ];
         $messages = [
-            '*.required' => 'هذا الحقل مطلوب',
+            'photo.required' => 'هذا الحقل مطلوب',
             'photo.image' => 'يجب أن بكون الملف المرفق صورة',
             'photo.mimes' => 'صيغة الملف يجب أن تكون من نوع :mimes',
             'photo.size' => 'لا يجب أن تتجاوز الصورة مساحة 3 ميجا',
@@ -59,10 +58,6 @@ class SportSlidersController extends Controller
             $slider->photo = $this->upload_file($request->photo, 'sport-sliders');
         }
 
-        $slider->description_ar = $request->description_ar;
-        $slider->description_en = $request->description_en;
-        $slider->description_tu = $request->description_tu;
-        $slider->description_fr = $request->description_fr;
         $slider->section_title = 'sport_page';
 
         $slider->save();
@@ -92,11 +87,9 @@ class SportSlidersController extends Controller
     {
         //
         $rules = [
-            '*' => 'required',
-            'photo' => 'image|mimes:png,jpg,jpeg|max:3000',
+            'photo' => 'nullable|image|mimes:png,jpg,jpeg|max:3000',
         ];
         $messages = [
-            '*.required' => 'هذا الحقل مطلوب',
             'photo.image' => 'يجب أن بكون الملف المرفق صورة',
             'photo.mimes' => 'صيغة الملف يجب أن تكون من نوع :mimes',
             'photo.size' => 'لا يجب أن تتجاوز الصورة مساحة 3 ميجا',
@@ -107,7 +100,7 @@ class SportSlidersController extends Controller
         if ($request->hasFile('photo')) {
             $path = parse_url($slider->photo);
             unlink(public_path($path['path']));
-            $slider->photo = $this->upload_file($request->photo, 'sport-sliders');
+            $slider->photo = $this->upload_file($request->photo, 'sport_sliders');
         }
 
         $slider->description_ar = $request->description_ar;

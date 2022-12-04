@@ -26,7 +26,7 @@
                             @foreach ($teamWorks as $teamWork)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td><img class="img-circle img-bordered-sm" src="{{ Storage::url($teamWork->photo) }}"
+                                    <td><img class="img-circle img-bordered-sm" src="{{ $teamWork->photo }}"
                                             width="80" alt="Team Work Image"></td>
                                     <td>{{ $teamWork->title_ar }}</td>
                                     <td>{{ $teamWork->career_title_ar }}</td>

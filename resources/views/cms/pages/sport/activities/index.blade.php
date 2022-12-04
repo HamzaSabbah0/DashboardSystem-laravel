@@ -27,9 +27,12 @@
                             @foreach ($activities as $activity)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td><img src= {{$activity->photo}} alt='new' width='70' height='70'></td>
+                                    <td>
+                                        <img class="img-circle img-bordered-sm" src="{{ $activity->photo }}" width="80"
+                                            alt="Image">
+                                    </td>
                                     <td>{{ $activity->title_ar }}</td>
-                                    <td>{{ \Str::limit($activity->description_ar, 100, '...') }}</td>
+                                    <td>{!! \Str::words(strip_tags($activity->description_ar), 50, '...') !!}</td>
                                     <td class="text-center">
                                         <div class="btn-group" role="group" aria-label="Basic outlined example">
                                             <a href="{{ route('panel.sport.activities.edit', $activity->id) }}"
@@ -57,7 +60,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        {{-- {{ $activity->links() }} --}}
+                        {{ $activities->links() }}
                     </div>
                 </div>
             </div>

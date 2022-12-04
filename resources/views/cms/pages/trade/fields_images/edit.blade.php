@@ -12,9 +12,19 @@
                     </div>
                 </div>
                 <div class="widget-content widget-content-area">
-                    <form method="POST" action="{{route('panel.trade.fields-images.update','fields_image')}}">
+                    <form method="POST" action="{{ route('panel.trade.fields-images.update', $elevenFieldsImage->id) }}"
+                        enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
+                        <div class="form-group mb-4">
+                            <label>Trade</label>
+                            <select class="form-select  form-select-lg" name="eleven_field_id">
+                                @foreach ($elevenFields as $elevenField)
+                                    <option value="{{ $elevenField->id }}">
+                                        {{ $elevenField->title_ar }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <div class="form-group mb-4">
                             <label for="photo">صورة المجال </label>
                             <div class="custom-file-container" data-upload-id="myFirstImage">
@@ -30,7 +40,7 @@
                                 <label class="custom-file-container__custom-file">
                                     <input type="file" name="photo"
                                         class="custom-file-container__custom-file__custom-file-input"
-                                        accept="image/png,image/jpg,image/jpeg" required>
+                                        accept="image/png,image/jpg,image/jpeg">
                                     {{-- <input type="hidden" name="MAX_FILE_SIZE" value="10485760" /> --}}
                                     <span class="custom-file-container__custom-file__custom-file-control"></span>
                                 </label>
@@ -47,6 +57,10 @@
 
 @push('scripts')
     <script>
-        new FileUploadWithPreview('myFirstImage');
+        $(document).ready(function() {
+            new FileUploadWithPreview('myFirstImage', {
+                presetFiles: ["{{ $elevenFieldsImage->photo }}"]
+            });
+        });
     </script>
 @endpush

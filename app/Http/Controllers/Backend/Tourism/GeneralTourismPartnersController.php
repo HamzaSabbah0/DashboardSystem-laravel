@@ -56,7 +56,7 @@ class GeneralTourismPartnersController extends Controller
         $partner = new ElevenPartner();
 
         if ($request->hasFile('photo')) {
-            $partner->photo = $this->upload_file($request->photo, 'generalTourism-partners');
+            $partner->photo = $this->upload_file($request->photo, 'generalTourism_partners');
         }
 
         $partner->section_title = 'general_tourism';
@@ -72,9 +72,9 @@ class GeneralTourismPartnersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(ElevenPartner $partner)
+    public function edit(ElevenPartner $elevenPartner)
     {
-        return view('cms.pages.general_tourism.partners.edit' , compact('partner'));
+        return view('cms.pages.general_tourism.partners.edit' , compact('elevenPartner'));
     }
 
     /**
@@ -84,14 +84,13 @@ class GeneralTourismPartnersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ElevenPartner $partner)
+    public function update(Request $request, ElevenPartner $elevenPartner)
     {
         //
         $rules = [
-            'photo' => 'required|image|mimes:png,jpg,jpeg|max:3000',
+            'photo' => 'image|mimes:png,jpg,jpeg|max:3000',
         ];
         $messages = [
-            'photo.required' => 'هذا الحقل مطلوب',
             'photo.image' => 'يجب أن بكون الملف المرفق صورة',
             'photo.mimes' => 'صيغة الملف يجب أن تكون من نوع :mimes',
             'photo.size' => 'لا يجب أن تتجاوز الصورة مساحة 3 ميجا',
@@ -100,14 +99,14 @@ class GeneralTourismPartnersController extends Controller
         $this->validate($request, $rules, $messages);
 
         if ($request->hasFile('photo')) {
-            $path = parse_url($partner->photo);
+            $path = parse_url($elevenPartner->photo);
             unlink(public_path($path['path']));
-            $partner->photo = $this->upload_file($request->photo, 'generalTourism-partners');
+            $elevenPartner->photo = $this->upload_file($request->photo, 'generalTourism_partners');
         }
 
-        $partner->section_title = 'general_tourism';
+        $elevenPartner->section_title = 'general_tourism';
 
-        $partner->save();
+        $elevenPartner->save();
         Session::flash('success', 'تمت العملية بنجاح');
         return redirect()->back();
     }
@@ -118,12 +117,12 @@ class GeneralTourismPartnersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ElevenPartner $partner)
+    public function destroy(ElevenPartner $elevenPartner)
     {
-        $path = parse_url($partner->photo);
+        $path = parse_url($elevenPartner->photo);
         unlink(public_path($path['path']));
 
-        $partner->delete();
+        $elevenPartner->delete();
 
         Session::flash('success', 'تمت العملية بنجاح');
         return redirect()->back();

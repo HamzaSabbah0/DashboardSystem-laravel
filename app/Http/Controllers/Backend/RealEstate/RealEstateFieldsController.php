@@ -41,6 +41,7 @@ class RealEstateFieldsController extends Controller
         //
         $rules = [
             '*' => 'required',
+            'files' =>'nullable',
         ];
         $messges = [
             '*.required' => 'هذا الحقل مطلوب',
@@ -71,9 +72,9 @@ class RealEstateFieldsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(ElevenField $field)
+    public function show(ElevenField $elevenField)
     {
-        return view('cms.pages.real_estate.fields.show' , compact('field'));
+        return view('cms.pages.real_estate.fields.show' , compact('elevenField'));
     }
 
     /**
@@ -82,9 +83,9 @@ class RealEstateFieldsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(ElevenField $field)
+    public function edit(ElevenField $elevenField)
     {
-        return view('cms.pages.real_estate.fields.edit' , compact('field'));
+        return view('cms.pages.real_estate.fields.edit' , compact('elevenField'));
     }
 
     /**
@@ -94,11 +95,12 @@ class RealEstateFieldsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ElevenField $field)
+    public function update(Request $request, ElevenField $elevenField)
     {
         //
         $rules = [
             '*' => 'required',
+            'files' =>'nullable',
         ];
         $messges = [
             '*.required' => 'هذا الحقل مطلوب',
@@ -106,17 +108,17 @@ class RealEstateFieldsController extends Controller
 
         $this->validate($request,$rules,$messges);
 
-        $field->title_ar = $request->title_ar;
-        $field->title_en = $request->title_en;
-        $field->title_tu = $request->title_tu;
-        $field->title_fr = $request->title_fr;
-        $field->description_ar = $request->description_ar;
-        $field->description_en = $request->description_en;
-        $field->description_tu = $request->description_tu;
-        $field->description_fr = $request->description_fr;
-        $field->section_title = 'real_estate';
+        $elevenField->title_ar = $request->title_ar;
+        $elevenField->title_en = $request->title_en;
+        $elevenField->title_tu = $request->title_tu;
+        $elevenField->title_fr = $request->title_fr;
+        $elevenField->description_ar = $request->description_ar;
+        $elevenField->description_en = $request->description_en;
+        $elevenField->description_tu = $request->description_tu;
+        $elevenField->description_fr = $request->description_fr;
+        $elevenField->section_title = 'real_estate';
 
-        $field->save();
+        $elevenField->save();
         Session::flash('success','تمت العملية بنجاح');
         return redirect()->back();
 
@@ -128,10 +130,10 @@ class RealEstateFieldsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ElevenField $field)
+    public function destroy(ElevenField $elevenField)
     {
         //
-        $field->delete();
+        $elevenField->delete();
 
         Session::flash('success','تمت العملية بنجاح');
         return redirect()->back();

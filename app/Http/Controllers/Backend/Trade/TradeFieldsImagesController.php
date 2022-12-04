@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Trade;
 
 use App\Http\Controllers\Controller;
+use App\Models\ElevenField;
 use App\Models\ElevenFieldsImage;
 use App\Traits\FileManager;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class TradeFieldsImagesController extends Controller
      */
     public function index()
     {
-        $images = ElevenFieldsImage::where('section_title','trade')->get();
+        $images = ElevenFieldsImage::where('section_title','trade')->paginate();
         return view('cms.pages.trade.fields_images.index' , compact('images'));
     }
 
@@ -29,7 +30,8 @@ class TradeFieldsImagesController extends Controller
      */
     public function create()
     {
-        return view('cms.pages.trade.fields_images.create');
+        $elevenFields = ElevenField::where('section_title', 'trade')->get();
+        return view('cms.pages.trade.fields_images.create' , compact('elevenFields'));
     }
 
     /**
@@ -42,9 +44,11 @@ class TradeFieldsImagesController extends Controller
     {
         //
         $rules = [
+            'eleven_field_id' => 'required|integer|exists:eleven_fields,id',
             'photo' => 'required|image|mimes:png,jpg,jpeg|max:3000',
         ];
         $messages = [
+            'eleven_field_id.required' => 'هذا الحقل مطلوب',
             'photo.required' => 'هذا الحقل مطلوب',
             'photo.image' => 'يجب أن بكون الملف المرفق صورة',
             'photo.mimes' => 'صيغة الملف يجب أن تكون من نوع :mimes',
@@ -56,11 +60,11 @@ class TradeFieldsImagesController extends Controller
         $image = new ElevenFieldsImage();
 
         if ($request->hasFile('photo')) {
-            $image->photo = $this->upload_file($request->photo, 'tradeField-images');
+            $image->photo = $this->upload_file($request->photo, 'tradeField_images');
         }
 
+        $image->eleven_field_id = $request->eleven_field_id;
         $image->section_title = 'trade';
-        $image->eleven_field_id = '1';
 
         $image->save();
         Session::flash('success', 'تمت العملية بنجاح');
@@ -74,9 +78,10 @@ class TradeFieldsImagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(ElevenFieldsImage $image)
+    public function edit($id)
     {
-        return view('cms.pages.trade.fields_images.edit' , compact('image'));
+        $elevenFields = ElevenField::where('section_title', 'trade')->get();
+        return view('cms.pages.trade.fields_images.edit' , compact('elevenFieldsImage','elevenFields'));
     }
 
     /**
@@ -86,14 +91,15 @@ class TradeFieldsImagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ElevenFieldsImage $image)
+    public function update(Request $request, ElevenFieldsImage $elevenFieldsImage)
     {
         //
         $rules = [
-            'photo' => 'required|image|mimes:png,jpg,jpeg|max:3000',
+            'eleven_field_id' => 'required|integer|exists:eleven_fields,id',
+            'photo' => 'nullable|image|mimes:png,jpg,jpeg|max:3000',
         ];
         $messages = [
-            'photo.required' => 'هذا الحقل مطلوب',
+            'eleven_field_id.required' => 'هذا الحقل مطلوب',
             'photo.image' => 'يجب أن بكون الملف المرفق صورة',
             'photo.mimes' => 'صيغة الملف يجب أن تكون من نوع :mimes',
             'photo.size' => 'لا يجب أن تتجاوز الصورة مساحة 3 ميجا',
@@ -102,15 +108,15 @@ class TradeFieldsImagesController extends Controller
         $this->validate($request, $rules, $messages);
 
         if ($request->hasFile('photo')) {
-            $path = parse_url($image->photo);
+            $path = parse_url($elevenFieldsImage->photo);
             unlink(public_path($path['path']));
-            $image->photo = $this->upload_file($request->photo, 'tradeField-images');
+            $elevenFieldsImage->photo = $this->upload_file($request->photo, 'tradeField_images');
         }
 
-        $image->section_title = 'trade';
-        $image->eleven_field_id = '1';
+        $elevenFieldsImage->eleven_field_id = $request->eleven_field_id;
+        $elevenFieldsImage->section_title = 'trade';
 
-        $image->save();
+        $elevenFieldsImage->save();
         Session::flash('success', 'تمت العملية بنجاح');
         return redirect()->back();
 
@@ -122,13 +128,13 @@ class TradeFieldsImagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ElevenFieldsImage $image)
+    public function destroy(ElevenFieldsImage $elevenFieldsImage)
     {
         //
-        $path = parse_url($image->photo);
+        $path = parse_url($elevenFieldsImage->photo);
         unlink(public_path($path['path']));
 
-        $image->delete();
+        $elevenFieldsImage->delete();
 
         Session::flash('success', 'تمت العملية بنجاح');
         return redirect()->back();

@@ -13,7 +13,7 @@
                     </div>
                 </div>
                 <div class="widget-content widget-content-area">
-                    <form action="{{route('panel.teamworks.update','teamwork')}}" method="POST"
+                    <form action="{{route('panel.teamworks.update', $teamwork->id)}}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
@@ -21,8 +21,8 @@
                             <div class="form-group mb-4 col">
                                 <label for="titleAr" class="form-label">الاسم باللغة العربية</label>
                                 <input type="text" class="form-control" name="title_ar" id="titleAr"
-                                    placeholder="الاسم" value="{{ old('title_ar', $teamWork ? $teamWork->title_ar : '') }}"
-                                    required>
+                                    placeholder="الاسم باللغة العربية"
+                                    value="{{ old('title_ar', $teamwork ? $teamwork->title_ar : '') }}" required>
                                 @error('title_ar')
                                     <div class="alert alert-danger">
                                         {{ $message }}
@@ -31,8 +31,9 @@
                             </div>
                             <div class="form-group mb-4 col">
                                 <label for="titleEn" class="form-label">الاسم باللغة الانجليزية</label>
-                                <input type="text" class="form-control" name="title_en" id="titleEn" placeholder="name"
-                                    value="{{ old('title_en', $teamWork ? $teamWork->title_en : '') }}" required>
+                                <input type="text" class="form-control" name="title_en" id="titleEn"
+                                    placeholder="الاسم باللغة الانجليزية"
+                                    value="{{ old('title_en', $teamwork ? $teamwork->title_en : '') }}" required>
                                 @error('title_en')
                                     <div class="alert alert-danger">
                                         {{ $message }}
@@ -43,8 +44,9 @@
                         <div class="row">
                             <div class="form-group mb-4 col">
                                 <label for="titleTu" class="form-label">الاسم باللغة التركية</label>
-                                <input type="text" class="form-control" name="title_tu" id="titleTu" placeholder="İsim"
-                                    value="{{ old('title_tu', $teamWork ? $teamWork->title_tu : '') }}" required>
+                                <input type="text" class="form-control" name="title_tu" id="titleTu"
+                                    placeholder="الاسم باللغة التركية"
+                                    value="{{ old('title_tu', $teamwork ? $teamwork->title_tu : '') }}" required>
                                 @error('title_tu')
                                     <div class="alert alert-danger">
                                         {{ $message }}
@@ -54,8 +56,8 @@
                             <div class="form-group mb-4 col">
                                 <label for="titleFr" class="form-label">الاسم باللغة الفرنسية</label>
                                 <input type="text" class="form-control" name="title_fr" id="titleFr"
-                                    placeholder="Le nom" value="{{ old('title_fr', $teamWork ? $teamWork->title_fr : '') }}"
-                                    required>
+                                    placeholder="الاسم باللغة الفرنسية"
+                                    value="{{ old('title_fr', $teamwork ? $teamwork->title_fr : '') }}" required>
                                 @error('title_fr')
                                     <div class="alert alert-danger">
                                         {{ $message }}
@@ -67,8 +69,8 @@
                             <div class="form-group mb-4 col">
                                 <label for="careerTitleAr" class="form-label">المهنة باللغة العربية</label>
                                 <input type="text" class="form-control" name="career_title_ar" id="careerTitleAr"
-                                    placeholder="المهنة"
-                                    value="{{ old('career_title_ar', $teamWork ? $teamWork->career_title_ar : '') }}"
+                                    placeholder="المهنة باللغة العربية"
+                                    value="{{ old('career_title_ar', $teamwork ? $teamwork->career_title_ar : '') }}"
                                     required>
                                 @error('career_title_ar')
                                     <div class="alert alert-danger">
@@ -79,8 +81,8 @@
                             <div class="form-group mb-4 col">
                                 <label for="careerTitleEr" class="form-label">المهنة باللغة الانجليزية</label>
                                 <input type="text" class="form-control" name="career_title_en" id="careerTitleEr"
-                                    placeholder="career"
-                                    value="{{ old('career_title_en', $teamWork ? $teamWork->career_title_en : '') }}"
+                                    placeholder="المهنة باللغة الانجليزية"
+                                    value="{{ old('career_title_en', $teamwork ? $teamwork->career_title_en : '') }}"
                                     required>
                                 @error('career_title_en')
                                     <div class="alert alert-danger">
@@ -93,8 +95,8 @@
                             <div class="form-group mb-4 col">
                                 <label for="careerTitleTu" class="form-label">المهنة باللغة التركية</label>
                                 <input type="text" class="form-control" name="career_title_tu" id="careerTitleTu"
-                                    placeholder="meslek"
-                                    value="{{ old('career_title_tu', $teamWork ? $teamWork->career_title_tu : '') }}"
+                                    placeholder="المهنة باللغة التركية"
+                                    value="{{ old('career_title_tu', $teamwork ? $teamwork->career_title_tu : '') }}"
                                     required>
                                 @error('career_title_tu')
                                     <div class="alert alert-danger">
@@ -105,8 +107,8 @@
                             <div class="form-group mb-4 col">
                                 <label for="careerTitleFr" class="form-label">المهنة باللغة الفرنسية</label>
                                 <input type="text" class="form-control" name="career_title_fr" id="careerTitleFr"
-                                    placeholder="profession"
-                                    value="{{ old('career_title_fr', $teamWork ? $teamWork->career_title_fr : '') }}"
+                                    placeholder="المهنة باللغة الفرنسية"
+                                    value="{{ old('career_title_fr', $teamwork ? $teamwork->career_title_fr : '') }}"
                                     required>
                                 @error('career_title_fr')
                                     <div class="alert alert-danger">
@@ -130,7 +132,7 @@
                                 <label class="custom-file-container__custom-file">
                                     <input type="file" name="photo"
                                         class="custom-file-container__custom-file__custom-file-input"
-                                        accept="image/png,image/jpg,image/jpeg" required>
+                                        accept="image/png,image/jpg,image/jpeg">
                                     {{-- <input type="hidden" name="MAX_FILE_SIZE" value="10485760" /> --}}
                                     <span class="custom-file-container__custom-file__custom-file-control"></span>
                                 </label>
@@ -147,6 +149,8 @@
 
 @push('scripts')
     <script>
-        new FileUploadWithPreview('myFirstImage');
+        new FileUploadWithPreview('myFirstImage', {
+            presetFiles: ["{{ $teamwork->photo }}"]
+        });
     </script>
 @endpush

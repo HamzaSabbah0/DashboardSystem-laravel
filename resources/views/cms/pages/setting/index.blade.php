@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="widget-content widget-content-area">
-                <form action="{{ route('panel.settings') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('panel.settings.post') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="form-group mb-4 col">
@@ -98,7 +98,7 @@
                         @enderror
                     </div>
                     <div class="form-group mb-4">
-                        <label for="photo">صورة الشعار</label>
+                        <label for="logo_photo">صورة الشعار</label>
                         <div class="custom-file-container" data-upload-id="myFirstImage">
                             <label>
                                 <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">
@@ -111,7 +111,8 @@
                             <label class="custom-file-container__custom-file">
                                 <input type="file" name="logo_photo"
                                     class="custom-file-container__custom-file__custom-file-input"
-                                    accept="image/png,image/jpg,image/jpeg" required>
+                                    accept="image/png,image/jpg,image/jpeg" id="logo_photo"
+                                    {{ $settings && $settings->logo_photo ? '' : 'required' }}>
                                 {{-- <input type="hidden" name="MAX_FILE_SIZE" value="10485760" /> --}}
                                 <span class="custom-file-container__custom-file__custom-file-control"></span>
                             </label>
@@ -127,7 +128,15 @@
 
 
 @push('scripts')
-    <script>
-        new FileUploadWithPreview('myFirstImage');
-    </script>
+    @if ($settings && $settings->photo)
+        <script>
+            new FileUploadWithPreview('myFirstImage', {
+                presetFiles: ["{{ $settings->photo }}"]
+            });
+        </script>
+    @else
+        <script>
+            new FileUploadWithPreview('myFirstImage');
+        </script>
+    @endif
 @endpush

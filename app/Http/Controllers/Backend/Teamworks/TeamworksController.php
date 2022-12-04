@@ -43,10 +43,10 @@ class TeamworksController extends Controller
         //
         $rules = [
             '*' => 'required',
-            'photo' => 'required|image|mimes:png,jpg,jpeg|max:3000',
+            'photo' => 'image|mimes:png,jpg,jpeg|max:3000',
         ];
         $messages = [
-            'photo.required' => 'هذا الحقل مطلوب',
+            '*.required' => 'هذا الحقل مطلوب',
             'photo.image' => 'يجب أن بكون الملف المرفق صورة',
             'photo.mimes' => 'صيغة الملف يجب أن تكون من نوع :mimes',
             'photo.size' => 'لا يجب أن تتجاوز الصورة مساحة 3 ميجا',
@@ -55,9 +55,6 @@ class TeamworksController extends Controller
 
         $teamWork = new TeamWork();
 
-        if ($request->hasFile('photo')) {
-            $teamWork->photo = $this->upload_file($request->photo, 'team-works');
-        }
         $teamWork->title_ar = $request->title_ar;
         $teamWork->title_en = $request->title_en;
         $teamWork->title_tu = $request->title_tu;
@@ -67,8 +64,11 @@ class TeamworksController extends Controller
         $teamWork->career_title_tu = $request->career_title_tu;
         $teamWork->career_title_fr = $request->career_title_fr;
 
-        $teamWork->save();
+        if ($request->hasFile('photo')) {
+            $teamWork->photo = $this->upload_file($request->photo, 'team_works');
+        }
 
+        $teamWork->save();
         Session::flash('success','تمت العملية بنجاح');
         return redirect()->back();
     }
@@ -79,9 +79,10 @@ class TeamworksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(TeamWork $teamWork)
+    public function edit(TeamWork $teamwork)
     {
-        return view('cms.pages.teamworks.edit' , compact('teamWork'));
+        // dd($teamWork);
+        return view('cms.pages.teamworks.edit' , compact('teamwork'));
     }
 
     /**
@@ -91,15 +92,15 @@ class TeamworksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TeamWork $teamWork)
+    public function update(Request $request, TeamWork $teamwork)
     {
         //
         $rules = [
             '*' => 'required',
-            'photo' => 'required|image|mimes:png,jpg,jpeg|max:3000',
+            'photo' => 'nullable|image|mimes:png,jpg,jpeg|max:3000',
         ];
         $messages = [
-            'photo.required' => 'هذا الحقل مطلوب',
+            '*.required' => 'هذا الحقل مطلوب',
             'photo.image' => 'يجب أن بكون الملف المرفق صورة',
             'photo.mimes' => 'صيغة الملف يجب أن تكون من نوع :mimes',
             'photo.size' => 'لا يجب أن تتجاوز الصورة مساحة 3 ميجا',
@@ -107,23 +108,22 @@ class TeamworksController extends Controller
 
         $this->validate($request, $rules, $messages);
 
+        $teamwork->title_ar = $request->title_ar;
+        $teamwork->title_en = $request->title_en;
+        $teamwork->title_tu = $request->title_tu;
+        $teamwork->title_fr = $request->title_fr;
+        $teamwork->career_title_ar = $request->career_title_ar;
+        $teamwork->career_title_en = $request->career_title_en;
+        $teamwork->career_title_tu = $request->career_title_tu;
+        $teamwork->career_title_fr = $request->career_title_fr;
+
         if ($request->hasFile('photo')) {
-            $path = parse_url($teamWork->photo);
+            $path = parse_url($teamwork->photo);
             unlink(public_path($path['path']));
-            $teamWork->photo = $this->upload_file($request->photo, 'team-works');
+            $teamwork->photo = $this->upload_file($request->photo, 'team_works');
         }
 
-        $teamWork->title_ar = $request->title_ar;
-        $teamWork->title_en = $request->title_en;
-        $teamWork->title_tu = $request->title_tu;
-        $teamWork->title_fr = $request->title_fr;
-        $teamWork->career_title_ar = $request->career_title_ar;
-        $teamWork->career_title_en = $request->career_title_en;
-        $teamWork->career_title_tu = $request->career_title_tu;
-        $teamWork->career_title_fr = $request->career_title_fr;
-
-        $teamWork->save();
-
+        $teamwork->save();
         Session::flash('success','تمت العملية بنجاح');
         return redirect()->back();
     }
@@ -134,14 +134,13 @@ class TeamworksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TeamWork $teamWork)
+    public function destroy(TeamWork $teamwork)
     {
         //
-        $path = parse_url($teamWork->photo);
+        $path = parse_url($teamwork->photo);
         unlink(public_path($path['path']));
 
-        $teamWork->delete();
-
+        $teamwork->delete();
         Session::flash('success', 'تمت العملية بنجاح');
         return redirect()->back();
     }

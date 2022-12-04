@@ -67,7 +67,7 @@ class GeneralTourismActivitiesController extends Controller
         $activity->section_title = 'general_tourism';
 
         if ($request->hasFile('photo')) {
-            $activity->photo = $this->upload_file($request->photo, 'generalTourism-activities');
+            $activity->photo = $this->upload_file($request->photo, 'generalTourism_activities');
         }
 
         $activity->save();
@@ -81,9 +81,9 @@ class GeneralTourismActivitiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(ElevenActivity $activity)
+    public function show(ElevenActivity $elevenActivity)
     {
-        return view('cms.pages.general_tourism.activities.show' , compact('activity'));
+        return view('cms.pages.general_tourism.activities.show' , compact('elevenActivity'));
     }
 
     /**
@@ -92,9 +92,9 @@ class GeneralTourismActivitiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(ElevenActivity $activity)
+    public function edit(ElevenActivity $elevenActivity)
     {
-        return view('cms.pages.general_tourism.activities.edit' , compact('activity'));
+        return view('cms.pages.general_tourism.activities.edit' , compact('elevenActivity'));
     }
 
     /**
@@ -104,7 +104,7 @@ class GeneralTourismActivitiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ElevenActivity $activity)
+    public function update(Request $request, ElevenActivity $elevenActivity)
     {
         $rules = [
             '*' => 'required',
@@ -119,23 +119,23 @@ class GeneralTourismActivitiesController extends Controller
 
         $this->validate($request, $rules, $messges);
 
-        $activity->title_ar = $request->title_ar;
-        $activity->title_en = $request->title_en;
-        $activity->title_tu = $request->title_tu;
-        $activity->title_fr = $request->title_fr;
-        $activity->description_ar = $request->description_ar;
-        $activity->description_en = $request->description_en;
-        $activity->description_tu = $request->description_tu;
-        $activity->description_fr = $request->description_fr;
-        $activity->section_title = 'general_tourism';
+        $elevenActivity->title_ar = $request->title_ar;
+        $elevenActivity->title_en = $request->title_en;
+        $elevenActivity->title_tu = $request->title_tu;
+        $elevenActivity->title_fr = $request->title_fr;
+        $elevenActivity->description_ar = $request->description_ar;
+        $elevenActivity->description_en = $request->description_en;
+        $elevenActivity->description_tu = $request->description_tu;
+        $elevenActivity->description_fr = $request->description_fr;
+        $elevenActivity->section_title = 'general_tourism';
 
         if ($request->hasFile('photo')) {
-            $path = parse_url($activity->photo);
+            $path = parse_url($elevenActivity->photo);
             unlink(public_path($path['path']));
-            $activity->photo = $this->upload_file($request->photo, 'generalTourism-activities');
+            $elevenActivity->photo = $this->upload_file($request->photo, 'generalTourism_activities');
         }
 
-        $activity->save();
+        $elevenActivity->save();
         Session::flash('success', 'تمت العملية بنجاح');
         return redirect()->back();
     }
@@ -146,12 +146,12 @@ class GeneralTourismActivitiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ElevenActivity $activity)
+    public function destroy(ElevenActivity $elevenActivity)
     {
-        $path = parse_url($activity->photo);
+        $path = parse_url($elevenActivity->photo);
         unlink(public_path($path['path']));
 
-        $activity->delete();
+        $elevenActivity->delete();
 
         Session::flash('success', 'تمت العملية بنجاح');
         return redirect()->back();
