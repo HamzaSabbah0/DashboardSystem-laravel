@@ -28,4 +28,9 @@ class About extends Model
     {
         return $this->get_file_url($value);
     }
+
+    public function getVideoAttribute($value)
+    {
+        return $this->get_file_url($value);
+    }
 }

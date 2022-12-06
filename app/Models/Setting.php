@@ -21,7 +21,7 @@ class Setting extends Model
         'phone',
     ];
 
-    public function getPhotoAttribute($value)
+    public function getLogoPhotoAttribute($value)
     {
         return $this->get_file_url($value);
     }

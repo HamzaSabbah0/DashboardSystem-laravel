@@ -1,0 +1,53 @@
+@font-face {
+    font-family: 'Cairo';
+    font-weight: 100 1000;
+    font-stretch: 25% 151%;
+    src: local('Open Sans Light'), local('OpenSans-Light'), url('../fonts/Cairo/Cairo-VariableFont_wght.ttf') format('woff');
+}
+
+:root {
+    --main-color: #E5C066;
+    --main-white-color: #ffffff;
+    --light-black-color: #2F2E33;
+    --dark-black-color: #000000;
+    --light-gray-color: #9F9EA0;
+    --dark-gray-color: #847C84;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cairo', sans-serif !important;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.whatsapp-contact {
+    position: fixed;
+    bottom: 29px;
+    z-index: 99999;
+}
+
+.whatsapp-contact a {
+    text-decoration: none;
+}
+
+.whatsapp-contact a img {
+    width: 50px;
+    height: 50px;
+}
+
+@media only screen and (max-width: 600px) {
+
+    .whatsapp-contact a img {
+        width: 50px;
+        height: 50px;
+    }
+}

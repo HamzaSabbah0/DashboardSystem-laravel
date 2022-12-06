@@ -1,0 +1,270 @@
+.real_estate_page {
+    width: 100%;
+}
+
+.real_estate_page .main_slider {
+    width: 100%;
+    height: calc(100vh - 80px);
+    margin-bottom: 32px;
+}
+
+.real_estate_page .main_slider .owl-carousel {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.real_estate_page .main_slider .owl-carousel .owl-stage-outer {
+    width: 100%;
+    height: 100%;
+}
+
+.real_estate_page .main_slider .owl-carousel .owl-stage-outer .owl-stage,
+.real_estate_page .main_slider .owl-carousel .owl-stage-outer .owl-stage .owl-item,
+.real_estate_page .main_slider .owl-carousel .owl-stage-outer .owl-stage .owl-item .item {
+    height: 100%;
+}
+
+.real_estate_page .main_slider .owl-carousel .owl-item img {
+    width: 100%;
+    height: 100%;
+}
+
+.real_estate_page .main_slider .owl-theme .owl-dots {
+    width: 100%;
+    margin: 0;
+    padding: 0 20px;
+    position: absolute;
+    bottom: 30px;
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.real_estate_page .main_slider .owl-theme .owl-nav {
+    width: 100%;
+    margin: 0;
+    padding: 0 20px;
+    position: absolute;
+    top: 50%;
+    z-index: 99;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.real_estate_page .main_slider .owl-theme .owl-nav button {
+    width: 35px;
+    height: 35px;
+    background-color: rgba(0, 0, 0, 50%);
+    color: var(--main-white-color);
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--main-white-color);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.real_estate_page .main_slider .owl-carousel .item {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.real_estate_page .main_slider .owl-carousel .item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.real_estate_page .about_real_estate {
+    width: 100%;
+    margin-bottom: 50px;
+    padding: 0 120px;
+}
+
+.real_estate_page .about_real_estate .main-title {
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 71px;
+    color: var(--main-color);
+    margin-bottom: 24px;
+}
+
+.real_estate_page .about_real_estate p {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    color: var(--dark-gray-color);
+}
+
+.real_estate_page .real_estate_guide {
+    width: 100%;
+    margin-bottom: 60px;
+    padding: 0 120px;
+}
+
+.real_estate_page .real_estate_guide .item {
+    width: 100%;
+    margin-bottom: 44px;
+    padding: 24px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 24px #ddd;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+
+.real_estate_page .real_estate_guide .item h3 {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 33px;
+    color: var(--main-color);
+    margin-bottom: 16px;
+    position: relative;
+    padding-inline-start: 15px;
+}
+
+.real_estate_page .real_estate_guide .item h3::before {
+    content: "";
+    width: 4px;
+    height: 4px;
+    background-color: var(--main-color);
+    position: absolute;
+    top: 15px;
+    inset-inline-start: 0;
+}
+
+.real_estate_page .real_estate_guide .item p {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--dark-gray-color);
+}
+
+.real_estate_page .companies_partnerships {
+    width: 100%;
+    margin-bottom: 43px;
+    padding: 0 120px;
+}
+
+.real_estate_page .companies_partnerships .partnerships {
+    width: 100%;
+    padding: 24px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 24px #ccc;
+}
+
+.real_estate_page .companies_partnerships .partnerships .description {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.real_estate_page .companies_partnerships .partnerships .description h3 {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 33px;
+    color: var(--main-color);
+    margin-bottom: 16px;
+    position: relative;
+    padding-inline-start: 15px;
+}
+
+.real_estate_page .companies_partnerships .partnerships .description h3::before {
+    content: "";
+    width: 4px;
+    height: 4px;
+    background-color: var(--main-color);
+    position: absolute;
+    top: 15px;
+    inset-inline-start: 0;
+}
+
+.real_estate_page .companies_partnerships .companies {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5%;
+}
+
+.real_estate_page .companies_partnerships .companies .item {
+    width: 20%;
+    height: 70px;
+}
+
+.real_estate_page .companies_partnerships .companies .item img {
+    width: 100%;
+    height: 100%;
+}
+
+@media only screen and (max-width: 820px) {
+    .real_estate_page .main_slider {
+        height: 400px;
+    }
+
+    .real_estate_page .about_real_estate {
+        padding: 0 60px;
+    }
+
+    .real_estate_page .real_estate_guide {
+        padding: 0 60px;
+    }
+
+    .real_estate_page .companies_partnerships {
+        padding: 0 60px;
+    }
+
+    .real_estate_page .companies_partnerships .companies {
+        gap: 30px;
+    }
+    
+    .real_estate_page .companies_partnerships .companies .item {
+        width: 30%;
+        height: 70px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    
+
+    .real_estate_page .about_real_estate {
+        padding: 0 30px;
+    }
+
+    .real_estate_page .about_real_estate .main-title {
+        font-size: 35px;
+    }
+
+    .real_estate_page .real_estate_guide {
+        padding: 0 30px;
+    }
+
+    .real_estate_page .companies_partnerships {
+        padding: 0 30px;
+    }
+
+    .real_estate_page .companies_partnerships .companies {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .real_estate_page .companies_partnerships .companies .item {
+        width: 100%;
+        height: 70px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .real_estate_page .companies_partnerships .companies .item img {
+        width: 200px;
+    }
+}

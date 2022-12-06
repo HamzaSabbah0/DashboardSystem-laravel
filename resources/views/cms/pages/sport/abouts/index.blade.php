@@ -56,26 +56,17 @@
                             @enderror
                         </div>
                         <div class="form-group mb-4">
-                            <label for="photo">الفيديو التعبيري</label>
-                            <div class="custom-file-container" data-upload-id="myFirstImage">
-                                <label>
-                                    <a href="javascript:void(0)" class="custom-file-container__image-clear"
-                                        title="Clear Image">
-                                        <i class="fa-solid fa-xmark"></i> حذف الفيديو
-                                    </a>
-                                </label>
-                                @error('photo')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
-                                <label class="custom-file-container__custom-file">
-                                    <input type="file" name="photo"
-                                        class="custom-file-container__custom-file__custom-file-input"
-                                        accept="video/mp4,video/x-m4v,video/*" required>
-                                    {{-- <input type="hidden" name="MAX_FILE_SIZE" value="10485760" /> --}}
-                                    <span class="custom-file-container__custom-file__custom-file-control"></span>
-                                </label>
-                                <div class="custom-file-container__image-preview"></div>
-                            </div>
+                            <label for="video" class="label-control">الفيديو التعبيري</label>
+                            <input type="file" class="form-control" name="video" id="video"
+                                accept="video/mp4,video/mpeg">
+                            @error('video')
+                                <div class="alert alert-danger">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                            @if ($about && $about->video)
+                                <video src="{{ $about->video }}" controls width="300" height="250"></video>
+                            @endif
                         </div>
                         <input type="submit" class="mt-4 mb-4 btn btn-primary" value="حفظ">
                     </form>
@@ -122,8 +113,6 @@
             $('#descriptionEn').summernote(optionsEn);
             $('#descriptionFr').summernote(optionsEn);
             $('#descriptionTu').summernote(optionsEn);
-
-            new FileUploadWithPreview('myFirstImage');
         });
     </script>
 @endpush

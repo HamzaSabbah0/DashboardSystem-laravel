@@ -28,6 +28,7 @@ use App\Http\Controllers\Backend\Trade\TradeAboutController;
 use App\Http\Controllers\Backend\Trade\TradeFieldsController;
 use App\Http\Controllers\Backend\Trade\TradeFieldsImagesController;
 use App\Http\Controllers\Backend\Trade\TradeSlidersController;
+use App\Http\Controllers\Backend\VisitorsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,7 +47,7 @@ Route::prefix('panel')->name('panel.')->group(function () {
     Route::middleware('auth')->group(function () {
 
 
-        Route::view('/', 'cms.pages.home')->name('statistics');
+        Route::get('/', [VisitorsController::class, 'index'])->name('statistics');
 
         Route::prefix('home')->name('home.')->group(function () {
 
@@ -54,10 +55,10 @@ Route::prefix('panel')->name('panel.')->group(function () {
             Route::post('about', [HomeAboutController::class, 'update_about_eleven'])->name('about.post');
             Route::get('manager', [HomeAboutController::class, 'manager_words'])->name('manager');
             Route::post('manager', [HomeAboutController::class, 'update_manager_words'])->name('manager.post');
-            Route::resource('partners', ElevenPartnersController::class, ['parameters' =>[
+            Route::resource('partners', ElevenPartnersController::class, ['parameters' => [
                 'partners' => 'elevenPartner'
             ]]);
-            Route::resource('services', HomeServicesController::class, ['parameters' =>[
+            Route::resource('services', HomeServicesController::class, ['parameters' => [
                 'services' => 'elevenField'
             ]]);
             Route::resource('sliders', HomeSlidersController::class);
@@ -67,30 +68,30 @@ Route::prefix('panel')->name('panel.')->group(function () {
         Route::prefix('sport')->name('sport.')->group(function () {
             Route::get('about', [AboutSportController::class, 'about_sport'])->name('about');
             Route::post('about', [AboutSportController::class, 'update_about_sport'])->name('about.post');
-            Route::resource('activities', SportActivitiesController::class, ['parameters' =>[
+            Route::resource('activities', SportActivitiesController::class, ['parameters' => [
                 'activities' => 'elevenActivity'
             ]]);
             Route::resource('sliders', SportSlidersController::class);
         });
 
         Route::prefix('general-tourism')->name('general.tourism.')->group(function () {
-            Route::resource('activities', GeneralTourismActivitiesController::class, ['parameters' =>[
+            Route::resource('activities', GeneralTourismActivitiesController::class, ['parameters' => [
                 'activities' => 'elevenActivity'
             ]]);
-            Route::resource('partners', GeneralTourismPartnersController::class, ['parameters' =>[
+            Route::resource('partners', GeneralTourismPartnersController::class, ['parameters' => [
                 'partners' => 'elevenPartner'
             ]]);
             Route::resource('sliders', GeneralTourismSlidersController::class);
         });
 
         Route::prefix('medical-tourism')->name('medical.tourism.')->group(function () {
-            Route::resource('fields', MedicalTourismFieldsController::class, ['parameters' =>[
+            Route::resource('fields', MedicalTourismFieldsController::class, ['parameters' => [
                 'fields' => 'elevenField'
             ]]);
-            Route::resource('fields-images', MedicalTourismFieldsImagesController::class, ['parameters' =>[
+            Route::resource('fields-images', MedicalTourismFieldsImagesController::class, ['parameters' => [
                 'fields-images' => 'elevenFieldsImage'
             ]]);
-            Route::resource('partners', MedicalTourismPartnersController::class, ['parameters' =>[
+            Route::resource('partners', MedicalTourismPartnersController::class, ['parameters' => [
                 'partners' => 'elevenPartner'
             ]]);
             Route::resource('sliders', MedicalTourismSlidersController::class);
@@ -99,10 +100,10 @@ Route::prefix('panel')->name('panel.')->group(function () {
         Route::prefix('trade')->name('trade.')->group(function () {
             Route::get('about', [TradeAboutController::class, 'about_trade'])->name('about');
             Route::post('about', [TradeAboutController::class, 'update_about_trade'])->name('about.post');
-            Route::resource('fields', TradeFieldsController::class, ['parameters' =>[
+            Route::resource('fields', TradeFieldsController::class, ['parameters' => [
                 'fields' => 'elevenField'
             ]]);
-            Route::resource('fields-images', TradeFieldsImagesController::class, ['parameters' =>[
+            Route::resource('fields-images', TradeFieldsImagesController::class, ['parameters' => [
                 'fields-images' => 'elevenFieldsImage'
             ]]);
             Route::resource('sliders', TradeSlidersController::class);
@@ -111,17 +112,17 @@ Route::prefix('panel')->name('panel.')->group(function () {
         Route::prefix('real-estate')->name('real.estate.')->group(function () {
             Route::get('about', [RealEstateAboutController::class, 'about_real_estate'])->name('about');
             Route::post('about', [RealEstateAboutController::class, 'update_real_estate'])->name('about.post');
-            Route::resource('fields', RealEstateFieldsController::class, ['parameters' =>[
+            Route::resource('fields', RealEstateFieldsController::class, ['parameters' => [
                 'fields' => 'elevenField'
             ]]);
-            Route::resource('partners', RealEstatePartnersController::class, ['parameters' =>[
+            Route::resource('partners', RealEstatePartnersController::class, ['parameters' => [
                 'partners' => 'elevenPartner'
             ]]);
             Route::resource('sliders', RealEstateSlidersController::class);
         });
 
         Route::prefix('programming')->name('programming.')->group(function () {
-            Route::resource('services', ProgrammingServicesController::class, ['parameters' =>[
+            Route::resource('services', ProgrammingServicesController::class, ['parameters' => [
                 'services' => 'elevenField'
             ]]);
             Route::resource('sliders', ProgrammingSlidersController::class);
@@ -131,6 +132,10 @@ Route::prefix('panel')->name('panel.')->group(function () {
 
         Route::get('settings', [SettingController::class, 'index'])->name('settings');
         Route::post('settings', [SettingController::class, 'update'])->name('settings.post');
+        Route::get('privacy', [SettingController::class, 'privacy_page'])->name('privacy');
+        Route::post('privacy', [SettingController::class, 'add_privacy'])->name('privacy.post');
+        Route::get('tearms', [SettingController::class, 'tearms_page'])->name('tearms');
+        Route::post('tearms', [SettingController::class, 'add_tearms'])->name('tearms.post');
         Route::post('logout', [LoginController::class, 'logout'])->name('logout');
     });
 });

@@ -876,6 +876,22 @@
                     </li>
                 </ul>
             </li>
+            <li class="menu {{ \Route::currentRouteName() == 'panel.privacy' ? 'active' : '' }}">
+                <a href="{{ route('panel.privacy') }}" class="dropdown-toggle">
+                    <div class="">
+                        <i class="fa-solid fa-user-shield"></i>
+                        <span>سياسة الخصوصية</span>
+                    </div>
+                </a>
+            </li>
+            <li class="menu {{ \Route::currentRouteName() == 'panel.tearms' ? 'active' : '' }}">
+                <a href="{{ route('panel.tearms') }}" class="dropdown-toggle">
+                    <div class="">
+                        <i class="fa-solid fa-file"></i>
+                        <span>شروط الاستخدام</span>
+                    </div>
+                </a>
+            </li>
             <li class="menu {{ \Route::currentRouteName() == 'panel.settings' ? 'active' : '' }}">
                 <a href="{{ route('panel.settings') }}" class="dropdown-toggle">
                     <div class="">

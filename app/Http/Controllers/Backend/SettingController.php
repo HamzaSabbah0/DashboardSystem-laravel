@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Privacy;
 use App\Models\Setting;
+use App\Models\Tearm;
 use App\Traits\FileManager;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -22,7 +24,7 @@ class SettingController extends Controller
     {
         $rules = [
             '*' => 'required',
-            'photo' => 'nullable|image|mimes:png,jpg,jpeg|max:3000',
+            'photo' => 'nullable|image|mimes:png,jpg,jpeg,svg|max:3000',
         ];
 
         $messages = [
@@ -49,6 +51,74 @@ class SettingController extends Controller
         }
 
         Setting::updateOrCreate(['id' => 1], $data);
+
+        Session::flash('success', 'تمت العملية بنجاح');
+        return redirect()->back();
+    }
+
+    public function privacy_page()
+    {
+        $privacy = Privacy::first();
+        return view('cms.pages.privacy.index', compact('privacy'));
+    }
+
+    public function add_privacy(Request $request)
+    {
+        $rules = [
+            'description_ar' => 'required',
+            'description_en' => 'required',
+            'description_tu' => 'required',
+            'description_fr' => 'required',
+        ];
+
+        $messages = [
+            '*.required' => 'هذا الحقل مطلوب',
+        ];
+
+        $this->validate($request, $rules, $messages);
+
+        $data = [
+            'description_ar' => $request->description_ar,
+            'description_en' => $request->description_en,
+            'description_tu' => $request->description_tu,
+            'description_fr' => $request->description_fr,
+        ];
+
+        Privacy::updateOrCreate(['id' => 1], $data);
+
+        Session::flash('success', 'تمت العملية بنجاح');
+        return redirect()->back();
+    }
+
+    public function tearms_page()
+    {
+        $tearms = Tearm::first();
+        return view('cms.pages.tearms.index', compact('tearms'));
+    }
+
+    public function add_tearms(Request $request)
+    {
+        $rules = [
+            'description_ar' => 'required',
+            'description_en' => 'required',
+            'description_tu' => 'required',
+            'description_fr' => 'required',
+        ];
+
+        $messages = [
+            '*.required' => 'هذا الحقل مطلوب',
+        ];
+
+        $this->validate($request, $rules, $messages);
+
+        $data = [
+            'description_ar' => $request->description_ar,
+            'description_en' => $request->description_en,
+            'description_tu' => $request->description_tu,
+            'description_fr' => $request->description_fr,
+        ];
+
+        Tearm::updateOrCreate(['id' => 1], $data);
 
         Session::flash('success', 'تمت العملية بنجاح');
         return redirect()->back();
