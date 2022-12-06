@@ -19,6 +19,9 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Cairo', sans-serif !important;
+    line-break: anywhere;
+    word-wrap: inherit;
+    overflow-wrap: normal;
 }
 
 a {

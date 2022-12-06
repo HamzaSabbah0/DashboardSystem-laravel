@@ -4,7 +4,7 @@
             <img src="{{ $manager_word->photo }}" alt="about">
         </div>
         <div class="card-body">
-            <h4 class="sub-title">How Us</h4>
+            <h4 class="sub-title">{{ __('frontend.chairmans_speech') }}</h4>
             <h3 class="main-title">{{ $manager_word['title_' . app()->getLocale()] }}</h3>
             <p>{!! $manager_word['description_' . app()->getLocale()] !!}</p>
         </div>

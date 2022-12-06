@@ -3,9 +3,7 @@
         <div class="about">
             <h2><img src="{{ asset('website/assets/images/logo.svg') }}" alt="logo"> ELEVEN STARS</h2>
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus doloremque nulla sunt rem
-                quam? Accusamus placeat nobis reiciendis cum ducimus amet, praesentium dolores autem, porro
-                quisquam a atque labore tempora.
+                {{ __('frontend.footer_about') }}
             </p>
             @php
                 $item = \App\Models\Setting::first();
@@ -35,9 +33,11 @@
                         href="{{ route(app()->getLocale() . '.sub.tourism.medical') }}">{{ __('frontend.medical_tourism') }}</a>
                 </li>
                 <li><a href="{{ route(app()->getLocale() . '.sub.trading') }}">{{ __('frontend.trading') }}</a></li>
-                <li><a href="{{ route(app()->getLocale() . '.sub.real-estate') }}">{{ __('frontend.real_estate') }}</a>
+                <li><a
+                        href="{{ route(app()->getLocale() . '.sub.real-estate') }}">{{ __('frontend.real_estate') }}</a>
                 </li>
-                <li><a href="{{ route(app()->getLocale() . '.sub.programming') }}">{{ __('frontend.programming') }}</a>
+                <li><a
+                        href="{{ route(app()->getLocale() . '.sub.programming') }}">{{ __('frontend.programming') }}</a>
                 </li>
             </ul>
         </div>

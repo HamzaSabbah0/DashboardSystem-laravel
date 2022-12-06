@@ -10,9 +10,7 @@
         @include('website.pages.trading._slider')
 
         {{-- about --}}
-        @if ($about)
-            @include('website.pages.trading._about')
-        @endif
+        @include('website.pages.trading._about')
 
         {{-- fields --}}
         @include('website.pages.trading._fields')

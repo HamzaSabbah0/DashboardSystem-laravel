@@ -1,7 +1,7 @@
 <section class="companies_partnerships">
     <div class="partnerships">
         <div class="description">
-            <h3>Lorem ipsum dolor</h3>
+            <h3>{{__('frontend.real_estate_partnerships')}}</h3>
         </div>
         <div class="companies">
             @foreach ($partners as $item)

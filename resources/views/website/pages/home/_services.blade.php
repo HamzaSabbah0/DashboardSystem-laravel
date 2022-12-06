@@ -1,10 +1,8 @@
 <section class="our_services">
     <div class="description">
-        <h4 class="sub-title">Our Services</h4>
-        <h3 class="main-title">Lorem ipsum dolor.</h3>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo corporis totam natus dolor
-            exercitationem iusto laboriosam cupiditate dolores molestias, praesentium aliquam
-            repudiandae! Nihil officia ea ratione explicabo culpa maxime fuga?</p>
+        <h4 class="sub-title">{{ __('frontend.our_services') }}</h4>
+        <h3 class="main-title">{{ __('frontend.out_premium_services') }}</h3>
+        <p>{{ __('frontend.out_premium_services_description') }}</p>
     </div>
     <div class="service">
         @foreach ($services as $item)

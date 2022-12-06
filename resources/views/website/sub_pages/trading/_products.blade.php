@@ -1,7 +1,7 @@
 <section class="turky_products_specialize">
-    <h2>Lorem ipsum dolor sit.</h2>
+    <h2>{{ __('frontend.specialized_in_turkish_products') }}</h2>
     <ul>
-        <li>Lorem, ipsum dolor.</li>
-        <li>Lorem, ipsum dolor.</li>
+        <li>{{ __('frontend.facilitate_the_shipping_process') }}</li>
+        <li>{{ __('frontend.facilitate_the_customs_process') }}</li>
     </ul>
 </section>

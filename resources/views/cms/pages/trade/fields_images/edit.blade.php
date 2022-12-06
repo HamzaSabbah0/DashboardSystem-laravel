@@ -18,10 +18,13 @@
                         @method('PUT')
                         <div class="form-group mb-4">
                             <label>Trade</label>
-                            <select class="form-select  form-select-lg" name="eleven_field_id">
+                            <select class="form-select  form-select-lg" name="eleven_field_id" required>
+                                <option value="{{ $elevenFieldsImage->eleven_field->id }}" selected>
+                                    {{ $elevenFieldsImage->eleven_field->title_ar }}</option>
                                 @foreach ($elevenFields as $elevenField)
-                                    <option value="{{ $elevenField->id }}">
-                                        {{ $elevenField->title_ar }}</option>
+                                    @if ($elevenField->id != $elevenFieldsImage->eleven_field->id)
+                                        <option value="{{ $elevenField->id }}">{{ $elevenField->title_ar }}</option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>

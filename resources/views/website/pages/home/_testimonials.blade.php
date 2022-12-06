@@ -4,7 +4,7 @@
         @foreach ($testimonials as $item)
             <div class="item">
                 <div class="customer">
-                    <h3>Our Customer</h3>
+                    <h3>{{ __('frontend.customers_opinions') }}</h3>
                     <img src="{{ $item->photo }}" alt="customer">
                 </div>
                 <div class="description">

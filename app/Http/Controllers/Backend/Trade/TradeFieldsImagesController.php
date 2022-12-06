@@ -19,8 +19,8 @@ class TradeFieldsImagesController extends Controller
      */
     public function index()
     {
-        $images = ElevenFieldsImage::where('section_title','trade')->paginate();
-        return view('cms.pages.trade.fields_images.index' , compact('images'));
+        $images = ElevenFieldsImage::where('section_title', 'trade')->paginate();
+        return view('cms.pages.trade.fields_images.index', compact('images'));
     }
 
     /**
@@ -31,7 +31,7 @@ class TradeFieldsImagesController extends Controller
     public function create()
     {
         $elevenFields = ElevenField::where('section_title', 'trade')->get();
-        return view('cms.pages.trade.fields_images.create' , compact('elevenFields'));
+        return view('cms.pages.trade.fields_images.create', compact('elevenFields'));
     }
 
     /**
@@ -45,31 +45,32 @@ class TradeFieldsImagesController extends Controller
         //
         $rules = [
             'eleven_field_id' => 'required|integer|exists:eleven_fields,id',
-            'photo' => 'required|image|mimes:png,jpg,jpeg|max:3000',
+            'photo.required' => 'هذا الحقل مطلوب',
+            'photo.*' => 'mimes:png,jpg,jpeg|max:3000',
         ];
         $messages = [
             'eleven_field_id.required' => 'هذا الحقل مطلوب',
             'photo.required' => 'هذا الحقل مطلوب',
-            'photo.image' => 'يجب أن بكون الملف المرفق صورة',
-            'photo.mimes' => 'صيغة الملف يجب أن تكون من نوع :mimes',
-            'photo.size' => 'لا يجب أن تتجاوز الصورة مساحة 3 ميجا',
+            'photo.*.image' => 'يجب أن بكون الملف المرفق صورة',
+            'photo.*.mimes' => 'صيغة الملف يجب أن تكون من نوع :mimes',
+            'photo.*.size' => 'لا يجب أن تتجاوز الصورة مساحة 3 ميجا',
         ];
 
         $this->validate($request, $rules, $messages);
 
-        $image = new ElevenFieldsImage();
-
+        $files  = $request->file('photo');
         if ($request->hasFile('photo')) {
-            $image->photo = $this->upload_file($request->photo, 'tradeField_images');
+            foreach ($files as $photo) {
+                $image = new ElevenFieldsImage();
+                $image->photo = $this->upload_file($photo, 'tradeField_images');
+                $image->eleven_field_id = $request->eleven_field_id;
+                $image->section_title = 'trade';
+                $image->save();
+            }
         }
 
-        $image->eleven_field_id = $request->eleven_field_id;
-        $image->section_title = 'trade';
-
-        $image->save();
         Session::flash('success', 'تمت العملية بنجاح');
         return redirect()->back();
-
     }
 
     /**
@@ -78,10 +79,10 @@ class TradeFieldsImagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(ElevenFieldsImage $elevenFieldsImage)
     {
         $elevenFields = ElevenField::where('section_title', 'trade')->get();
-        return view('cms.pages.trade.fields_images.edit' , compact('elevenFieldsImage','elevenFields'));
+        return view('cms.pages.trade.fields_images.edit', compact('elevenFieldsImage', 'elevenFields'));
     }
 
     /**
@@ -119,7 +120,6 @@ class TradeFieldsImagesController extends Controller
         $elevenFieldsImage->save();
         Session::flash('success', 'تمت العملية بنجاح');
         return redirect()->back();
-
     }
 
     /**

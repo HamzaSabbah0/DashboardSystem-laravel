@@ -17,7 +17,7 @@
                         @csrf
                         <div class="form-group mb-4">
                             <label>Trade Fields</label>
-                            <select class="form-select  form-select-lg" name="eleven_field_id">
+                            <select class="form-select  form-select-lg" name="eleven_field_id" required>
                                 @foreach ($elevenFields as $elevenField)
                                     <option value="{{$elevenField->id}}">{{$elevenField->title_ar}}</option>
                                 @endforeach
@@ -32,13 +32,13 @@
                                         <i class="fa-solid fa-xmark"></i> حذف الصورة
                                     </a>
                                 </label>
-                                @error('photo')
+                                @error('photo.*')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                                 <label class="custom-file-container__custom-file">
-                                    <input type="file" name="photo"
+                                    <input type="file" name="photo[]"
                                         class="custom-file-container__custom-file__custom-file-input"
-                                        accept="image/png,image/jpg,image/jpeg" required>
+                                        accept="image/png,image/jpg,image/jpeg" multiple required>
                                     {{-- <input type="hidden" name="MAX_FILE_SIZE" value="10485760" /> --}}
                                     <span class="custom-file-container__custom-file__custom-file-control"></span>
                                 </label>
