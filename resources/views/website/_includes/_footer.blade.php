@@ -1,23 +1,37 @@
 <footer>
     <div class="footer-sections">
         <div class="about">
-            <h2><img src="{{ asset('website/assets/images/logo.svg') }}" alt="logo"> ELEVEN STARS</h2>
-            <p>
-                {{ __('frontend.footer_about') }}
-            </p>
             @php
                 $item = \App\Models\Setting::first();
             @endphp
+
+            @if (isset($item->logo_photo))
+                <h2><img src="{{ $item->logo_photo }}" alt="logo"> ELEVEN STARS</h2>
+            @else
+                <h2><img src="{{ asset('website/assets/images/logo.svg') }}" alt="logo"> ELEVEN STARS</h2>
+            @endif
+            <p>
+                {{ __('frontend.footer_about') }}
+            </p>
             @if (isset($item))
                 <div class="social-links">
-                    @if (isset($item['twitter_link']))
-                        <a href="{{ $item['twitter_link'] }}"><i class="fa-brands fa-twitter"></i></a>
-                    @endif
                     @if (isset($item['facebook_link']))
                         <a href="{{ $item['facebook_link'] }}"><i class="fa-brands fa-facebook-f"></i></a>
                     @endif
                     @if (isset($item['instagram_link']))
                         <a href="{{ $item['instagram_link'] }}"><i class="fa-brands fa-square-instagram"></i></a>
+                    @endif
+                    @if (isset($item['youtube_link']))
+                        <a href="{{ $item['youtube_link'] }}"><i class="fa-brands fa-youtube"></i></a>
+                    @endif
+                    @if (isset($item['telegram_link']))
+                        <a href="{{ $item['telegram_link'] }}"><i class="fa-brands fa-telegram"></i></a>
+                    @endif
+                    @if (isset($item['snapchat_link']))
+                        <a href="{{ $item['snapchat_link'] }}"><i class="fa-brands fa-snapchat"></i></a>
+                    @endif
+                    @if (isset($item['tiktok_link']))
+                        <a href="{{ $item['tiktok_link'] }}"><i class="fa-brands fa-tiktok"></i></a>
                     @endif
                 </div>
             @endif

@@ -4,7 +4,7 @@
             @php
                 $item = \App\Models\Setting::first();
             @endphp
-            @if (isset($item))
+            @if (isset($item->logo_photo))
                 <img src="{{ $item->logo_photo }}" alt="logo">
             @else
                 <img src="{{ asset('website/assets/images/logo.svg') }}" alt="logo">

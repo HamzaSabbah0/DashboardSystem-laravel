@@ -38,8 +38,11 @@ class SettingController extends Controller
 
         $data = [
             'facebook_link' => $request->facebook_link,
-            'twitter_link' => $request->twitter_link,
             'instagram_link' => $request->instagram_link,
+            'youtube_link' => $request->youtube_link,
+            'telegram_link' => $request->telegram_link,
+            'snapchat_link' => $request->snapchat_link,
+            'tiktok_link' => $request->tiktok_link,
             'whatsapp_number' => $request->whatsapp_number,
             'address' => $request->address,
             'email' => $request->email,

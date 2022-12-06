@@ -15,10 +15,13 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->string('logo_photo');
+            $table->string('logo_photo')->nullable();
             $table->string('facebook_link');
-            $table->string('twitter_link');
             $table->string('instagram_link');
+            $table->string('youtube_link');
+            $table->string('telegram_link');
+            $table->string('snapchat_link');
+            $table->string('tiktok_link');
             $table->string('whatsapp_number');
             $table->string('address');
             $table->string('email');

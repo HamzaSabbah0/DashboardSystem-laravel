@@ -51,19 +51,6 @@
                                 </div>
                             @enderror
                             <div class="form-group mb-4 col">
-                                <label for="twitter" class="form-label">تويتر</label>
-                                <input type="text" class="form-control" name="twitter_link" id="twitter"
-                                    placeholder="رابط تويتر"
-                                    value="{{ old('twitter_link', $settings ? $settings->twitter_link : '') }}" required>
-                            </div>
-                            @error('twitter_link')
-                                <div class="alert alert-danger">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                        <div class="row">
-                            <div class="form-group mb-4 col">
                                 <label for="instagram" class="form-label">انستقرام</label>
                                 <input type="text" class="form-control" name="instagram_link" id="instagram"
                                     placeholder="رابط انستقرام"
@@ -71,6 +58,19 @@
                                     required>
                             </div>
                             @error('instagram_link')
+                                <div class="alert alert-danger">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="row">
+                            <div class="form-group mb-4 col">
+                                <label for="youtube" class="form-label">يوتيوب</label>
+                                <input type="text" class="form-control" name="youtube_link" id="youtube"
+                                    placeholder="رابط يوتيوب"
+                                    value="{{ old('youtube_link', $settings ? $settings->youtube_link : '') }}" required>
+                            </div>
+                            @error('youtube_link')
                                 <div class="alert alert-danger">
                                     {{ $message }}
                                 </div>
@@ -90,10 +90,46 @@
                         </div>
                         <div class="row">
                             <div class="form-group mb-4 col">
+                                <label for="telegram" class="form-label">تيليجرام</label>
+                                <input type="text" class="form-control" name="telegram_link" id="telegram"
+                                    placeholder="رابط تيليجرام"
+                                    value="{{ old('telegram_link', $settings ? $settings->telegram_link : '') }}" required>
+                            </div>
+                            @error('telegram_link')
+                                <div class="alert alert-danger">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                            <div class="form-group mb-4 col">
+                                <label for="snapchat" class="form-label">سناب شات</label>
+                                <input type="text" class="form-control" name="snapchat_link" id="snapchat"
+                                    placeholder="رابط سناب شات"
+                                    value="{{ old('snapchat_link', $settings ? $settings->snapchat_link : '') }}" required>
+                            </div>
+                            @error('snapchat_link')
+                                <div class="alert alert-danger">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="row">
+                            <div class="form-group mb-4 col">
+                                <label for="snapchat" class="form-label">تيك توك</label>
+                                <input type="text" class="form-control" name="tiktok_link" id="snapchat"
+                                    placeholder="رابط تيك توك"
+                                    value="{{ old('tiktok_link', $settings ? $settings->tiktok_link : '') }}"
+                                    required>
+                            </div>
+                            @error('tiktok_link')
+                                <div class="alert alert-danger">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                            <div class="form-group mb-4 col">
                                 <label for="address" class="form-label">العنوان</label>
                                 <input type="text" class="form-control" name="address" id="address"
-                                    placeholder="العنوان" value="{{ old('address', $settings ? $settings->address : '') }}"
-                                    required>
+                                    placeholder="العنوان"
+                                    value="{{ old('address', $settings ? $settings->address : '') }}" required>
                             </div>
                             @error('address')
                                 <div class="alert alert-danger">

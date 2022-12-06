@@ -13,8 +13,11 @@ class Setting extends Model
     protected $fillable = [
         'logo_photo',
         'facebook_link',
-        'twitter_link',
         'instagram_link',
+        'youtube_link',
+        'telegram_link',
+        'snapchat_link',
+        'tiktok_link',
         'whatsapp_number',
         'address',
         'email',
@@ -23,6 +26,6 @@ class Setting extends Model
 
     public function getLogoPhotoAttribute($value)
     {
-        return $this->get_file_url($value);
+        return $value ? $this->get_file_url($value) : NULL;
     }
 }

@@ -33,7 +33,15 @@
             <div class="logo-container">
                 <div class="logo">
                     <a href="{{ route(app()->getLocale() . '.home') }}">
-                        <img src="{{ asset('website/assets/images/logo.svg') }}" alt="logo"></a>
+                        @php
+                            $item = \App\Models\Setting::first();
+                        @endphp
+                        @if (isset($item->logo_photo))
+                            <img src="{{ $item->logo_photo }}" alt="logo">
+                        @else
+                            <img src="{{ asset('website/assets/images/logo.svg') }}" alt="logo">
+                        @endif
+                    </a>
                 </div>
                 <div class="nav-toggler">
                     <button class="show" onclick="toggleNav()"><i class="fa fa-bars"></i></button>
